@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @agency.name %>
+</p>
+
+<p>
+  <strong>Cover image:</strong>
+  <%= @agency.cover_image %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= @agency.logo %>
+</p>
+
+<%= link_to 'Edit', edit_admin_agency_path(@agency) %> |
+<%= link_to 'Back', admin_agencies_path %>

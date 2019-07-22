@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Drivers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Contact 1</th>
+      <th>Conatct 2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Address</th>
+      <th>Id proof</th>
+      <th>Additional</th>
+      <th>Profile image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drivers.each do |driver| %>
+      <tr>
+        <td><%= driver.first_name %></td>
+        <td><%= driver.last_name %></td>
+        <td><%= driver.contact_1 %></td>
+        <td><%= driver.conatct_2 %></td>
+        <td><%= driver.city %></td>
+        <td><%= driver.state %></td>
+        <td><%= driver.country %></td>
+        <td><%= driver.address %></td>
+        <td><%= driver.id_proof %></td>
+        <td><%= driver.additional_id %></td>
+        <td><%= driver.profile_image %></td>
+        <td><%= link_to 'Show', admin_driver_path(driver) %></td>
+        <td><%= link_to 'Edit', edit_admin_driver_path(driver) %></td>
+        <td><%= link_to 'Destroy', admin_agency_path(agency), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Driver', new_admin_driver_path %>

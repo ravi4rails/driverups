@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 mx-auto">
-      <div class="card mt-5">
-        <div class="card-header">
+      <div class="card">
+        <div class="card-header mt-5">
            <h2>Change your password</h2>          
         </div>
         <div class="card-body">
@@ -10,7 +10,7 @@
             <%= render "devise/shared/error_messages", resource: resource %>
             <%= f.hidden_field :reset_password_token %>
 
-            <div class="field">
+            <div class="form-group">
               <%= f.label :password, "New password" %><br />
               <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> characters minimum)</em><br />
@@ -18,13 +18,13 @@
               <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
             </div>
 
-            <div class="field">
+            <div class="form-group">
               <%= f.label :password_confirmation, "Confirm new password" %><br />
               <%= f.password_field :password_confirmation, autocomplete: "off" %>
             </div>
 
             <div class="actions">
-              <%= f.submit "Change my password", class: "btn btn-success" %>
+              <%= f.submit "Change my password" %>
             </div>
           <% end %>
 

@@ -1,0 +1,34 @@
+<%= form_for [:admin, @agency] do |form| %>
+
+  <% if agency.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(agency.errors.count, "error") %> prohibited this agency from being saved:</h2>
+
+      <ul>
+      <% agency.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cover_image %>
+    <%= form.text_field :cover_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :logo %>
+    <%= form.text_field :logo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+    <%= link_to 'Cancel', admin_agencies_path, class: "btn btn-outline-secondary rounded-0" %>
+  </div>
+<% end %>
