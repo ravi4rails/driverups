@@ -4,6 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_one :agency 
+  has_one :agency
 
+  ROLES = ["admin"] 
+
+  ROLES.each do |role|
+    define_method "#{role}?" do 
+      self.role == "#{role}"
+    end
+  end
+
+  def set_default_role
+    self.role = "admin"
+  end
 end
