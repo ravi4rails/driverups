@@ -8,6 +8,4 @@
 
 
 
-Admin.create([
-    { email: "admin@gmail.com", password: "password"}
-])
+ User.create(email: "admin@gmail.com", password: "password", role: "admin")
