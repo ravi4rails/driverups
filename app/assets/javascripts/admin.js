@@ -11,10 +11,9 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
-//= require jquery_with_bootstrap
-//= require jquery_validation
+//= require admin/jquery_validation
 //= require user_form_validation
-//= require agency_form_validation
-//= require driver_form_validation
-//= require turbolinks
+//= require admin/agency_form_validation
+//= require admin/driver_form_validation.js
+
+
