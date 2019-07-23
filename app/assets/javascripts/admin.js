@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require admin/jquery_validation
-//= require user_form_validation
+//= require admin/user_form_validation
 //= require admin/agency_form_validation
 //= require admin/driver_form_validation.js
 

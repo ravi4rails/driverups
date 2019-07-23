@@ -12,8 +12,8 @@ $(document).ready(function(){
       'user[country]' : "required",
       'user[address]' : "required",
       'user[id_proof]' : "required",
-      'user[username]' : "required"
-      'user[password]' : "required"
+      'user[username]' : "required",
+      'user[password]' : "required",
       'user[password_confirmation]' : "required"
     },
     messages: { 
