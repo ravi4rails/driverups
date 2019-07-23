@@ -9,5 +9,5 @@
 
 
 Admin.create([
-    { email: "admin@gmail.com", password: "password", role: "admin" }
+    { email: "admin@gmail.com", password: "password"}
 ])

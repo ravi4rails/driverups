@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control rounded-0" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :cover_image %>
-    <%= form.text_field :cover_image %>
+    <%= form.file_field :cover_image, class: "form-control rounded-0" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :logo %>
-    <%= form.text_field :logo %>
+    <%= form.file_field :logo, class: "form-control rounded-0" %>
   </div>
 
   <div class="actions">

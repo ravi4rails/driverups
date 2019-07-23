@@ -8,13 +8,8 @@ class User < ApplicationRecord
 
   ROLES = ["admin"] 
 
-  ROLES.each do |role|
-    define_method "#{role}?" do 
-      self.role == "#{role}"
-    end
+  def admin?
+    self.role == "admin"    
   end
 
-  def set_default_role
-    self.role = "admin"
-  end
 end

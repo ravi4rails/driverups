@@ -8,13 +8,22 @@
      
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render "shared/header" %>
-    <%= yield %>
-    <%= render "shared/footer" %>    
+    <%= render 'partials/admin_header'%>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-3">
+          <%= render 'partials/admin_sidebar' %>
+        </div>
+        <div class="col-md-9">
+          <%= yield %>
+        </div>  
+      </div>  
+    </div>
+    <%= render 'partials/admin_footer' %>  
   </body>
 </html>

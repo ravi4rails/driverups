@@ -64,3 +64,4 @@ gem 'jquery_with_bootstrap'
 gem 'devise'
 gem 'cancancan'
 gem 'ransack'
+gem "font-awesome-rails"
