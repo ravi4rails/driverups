@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $("#user_form").validate({
+  $("#admin_user_form").validate({
     error: function(label) {
       $(this).addClass("error");
     },
@@ -12,22 +12,22 @@ $(document).ready(function(){
       'user[country]' : "required",
       'user[address]' : "required",
       'user[id_proof]' : "required",
-      'user[username]' : "required"
-      'user[password]' : "required"
+      'user[username]' : "required",
+      'user[password]' : "required",
       'user[password_confirmation]' : "required"
     },
     messages: { 
-      'user[first_name]' : "please enter first_name",
-      'user[last_name]' : "please enter last_name",
-      'user[contact_number]' : "please enter contact_number",
+      'user[first_name]' : "please enter first name",
+      'user[last_name]' : "please enter last name",
+      'user[contact_number]' : "please enter contact number",
       'user[city]' : "please enter city",
       'user[state]' : "please enter state",
       'user[country]' : "please enter country",
       'user[address]' : "please enter address",
-      'user[id_proof]' : "please upload id_proof",
+      'user[id_proof]' : "please upload id proof",
       'user[username]' : "please enter username",
       'user[password]' : "please enter password",
-      'user[password_confirmation]' : "please enter password_confirmation"
+      'user[password_confirmation]' : "please enter confirm password"
     }
   });
 });  

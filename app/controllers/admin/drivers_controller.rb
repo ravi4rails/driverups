@@ -1,7 +1,7 @@
 class Admin::DriversController < AdminController
   before_action :set_driver, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  
+
   # GET /drivers
   # GET /drivers.json
   def index

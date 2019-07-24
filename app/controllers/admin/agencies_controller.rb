@@ -1,6 +1,8 @@
 class Admin::AgenciesController < AdminController
   before_action :set_agency, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! 
+  load_and_authorize_resource
+  before_action :authenticate_user!
+
   # GET /agencies
   # GET /agencies.json
   def index

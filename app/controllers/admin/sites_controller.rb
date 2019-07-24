@@ -1,5 +1,5 @@
 class Admin::SitesController < ApplicationController
-  before_action :authenticate_user!
+  load_and_authorize_resource
 
   layout 'admin'
   def dashboard;end

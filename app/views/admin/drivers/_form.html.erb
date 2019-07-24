@@ -1,4 +1,4 @@
-<%= form_for [:admin, @driver] do |form| %>
+<%= form_for [:admin, @driver], html: {id: 'driver_form'} do |form| %>
 
   <% if driver.errors.any? %>
     <div id="error_explanation">
