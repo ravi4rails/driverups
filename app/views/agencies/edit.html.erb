@@ -1,6 +1,15 @@
-<h1>Editing Agency</h1>
+<div class="container">
+  <div class="card mt-4">
+    <div class="card-header">
+      <h1>Editing Agency</h1>      
+    </div>
+    <div class="card-body">
+     <%= render 'form', agency: @agency %>
+     <%= link_to 'Show', @agency, class: "btn btn-success mt-2" %> |
+     <%= link_to 'Back', agencies_path, class: "btn btn-secondary mt-2" %>      
+    </div>
+  </div>
+</div>
 
-<%= render 'form', agency: @agency %>
 
-<%= link_to 'Show', @agency %> |
-<%= link_to 'Back', agencies_path %>
+

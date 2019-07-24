@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery_with_bootstrap
 //= require admin/jquery_validation
 //= require admin/user_form_validation
 //= require admin/agency_form_validation

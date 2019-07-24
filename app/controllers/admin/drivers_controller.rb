@@ -1,6 +1,7 @@
 class Admin::DriversController < AdminController
   before_action :set_driver, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /drivers
   # GET /drivers.json
   def index
@@ -28,7 +29,7 @@ class Admin::DriversController < AdminController
 
     respond_to do |format|
       if @driver.save
-        format.html { redirect_to @driver, notice: 'Driver was successfully created.' }
+        format.html { redirect_to admin_drivers_path, notice: 'Driver was successfully created.' }
         format.json { render :show, status: :created, location: @driver }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class Admin::DriversController < AdminController
   def update
     respond_to do |format|
       if @driver.update(driver_params)
-        format.html { redirect_to @driver, notice: 'Driver was successfully updated.' }
+        format.html { redirect_to admin_drivers_path, notice: 'Driver was successfully updated.' }
         format.json { render :show, status: :ok, location: @driver }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class Admin::DriversController < AdminController
   def destroy
     @driver.destroy
     respond_to do |format|
-      format.html { redirect_to drivers_url, notice: 'Driver was successfully destroyed.' }
+      format.html { redirect_to admin_drivers_url, notice: 'Driver was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

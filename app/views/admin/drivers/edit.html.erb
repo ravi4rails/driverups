@@ -1,6 +1,12 @@
-<h1>Editing Driver</h1>
+<div class="contanier">
+  <div class="card"> 
+    <div class="card-header">
+      <h1>Editing Driver</h1>      
+    </div>
+    <div class="card-body">
 
-<%= render 'form', driver: @driver %>
+      <%= render 'form', driver: @driver %>
 
-<%= link_to 'Show', @driver %> |
-<%= link_to 'Back', drivers_path %>
+      <%= link_to 'Show', admin_driver_path(@driver), class: "btn btn-success mt-2 btn-sm" %>
+    </div>
+  </div>

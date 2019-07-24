@@ -1,6 +1,6 @@
 class Admin::AgenciesController < AdminController
   before_action :set_agency, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user! 
   # GET /agencies
   # GET /agencies.json
   def index
@@ -28,7 +28,7 @@ class Admin::AgenciesController < AdminController
 
     respond_to do |format|
       if @agency.save
-        format.html { redirect_to @agency, notice: 'Agency was successfully created.' }
+        format.html { redirect_to admin_agencies_path, notice: 'Agency was successfully created.' }
         format.json { render :show, status: :created, location: @agency }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::AgenciesController < AdminController
   def update
     respond_to do |format|
       if @agency.update(agency_params)
-        format.html { redirect_to @agency, notice: 'Agency was successfully updated.' }
+        format.html { redirect_to admin_agencies_path, notice: 'Agency was successfully updated.' }
         format.json { render :show, status: :ok, location: @agency }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Admin::AgenciesController < AdminController
   def destroy
     @agency.destroy
     respond_to do |format|
-      format.html { redirect_to agencies_url, notice: 'Agency was successfully destroyed.' }
+      format.html { redirect_to admin_agencies_url, notice: 'Agency was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

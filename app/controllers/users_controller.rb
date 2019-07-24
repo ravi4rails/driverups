@@ -1,4 +1,4 @@
-class Admin::UsersController < AdminController
+class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
@@ -55,6 +55,6 @@ class Admin::UsersController < AdminController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :contact_number, :city, :state, :country, :address, :id_proof)
+    params.require(:user).permit!
   end
 end
