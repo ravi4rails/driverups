@@ -14,20 +14,20 @@
       </thead>
 
       <tbody>
-        <% @agencies.each do |agency| %>
+        <%# @agencies.each do |agency| %>
         <tr>
-          <td><%= agency.name %></td>
-          <td><%= agency.cover_image %></td>
-          <td><%= agency.logo %></td>
-          <td><%= link_to 'Show', agency, class: "btn btn-success" %></td>
-          <td><%= link_to 'Edit', edit_agency_path(agency), class: "btn btn-secondary" %></td>
-          <td><%= link_to 'Destroy', agency, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+          <td><%= @agency.name %></td>
+          <td><%= @agency.cover_image %></td>
+          <td><%= @agency.logo %></td>
+          <td><%= link_to 'Show', @agency, class: "btn btn-success" %></td>
+          <td><%= link_to 'Edit', edit_agency_path(@agency), class: "btn btn-secondary" %></td>
+          <td><%= link_to 'Destroy', @agency, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
         </tr>
-        <% end %>
+        <%# end %>
       </tbody>
     </table>
   </div>
   <br>
 </div>
-<%= link_to 'New Agency', new_agency_path, class: "btn btn-primary mt-2" %>    
+<%= link_to 'New Agency', new_agency_path, class: "btn btn-primary mt-3" %>
 

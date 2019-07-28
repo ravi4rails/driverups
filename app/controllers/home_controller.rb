@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  
   before_action only: [:index, :search_drivers] do 
     @q = Driver.ransack(params[:q])
   end

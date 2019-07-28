@@ -1,0 +1,110 @@
+<div class="container-fluid">
+  <div class="row no-gutters mt-3">
+    <div class="col-md-6">      
+      <div class="card mr-3">
+        <div class="card-body">    
+          <p>
+            <%= image_tag @driver.profile_image_url, class: "rounded-circle", style: "width:175px;height:175px;" %>
+          </p>
+
+          <p>
+            <strong>First name:</strong>
+            <%= @driver.first_name %>
+          </p>
+
+          <p>
+            <strong>Last name:</strong>
+            <%= @driver.last_name %>
+          </p>
+
+          <p>
+            <strong>Contact 1:</strong>
+            <%= @driver.contact_1 %>
+          </p>
+
+          <p>
+            <strong>Contact 2:</strong>
+            <%= @driver.contact_2 %>
+          </p>
+
+          <p>
+            <strong>City:</strong>
+            <%= @driver.city %>
+          </p>
+
+          <p>
+            <strong>State:</strong>
+            <%= @driver.state %>
+          </p>
+
+          <p>
+            <strong>Country:</strong>
+            <%= @driver.country %>
+          </p>
+
+          <p>
+            <strong>Address:</strong>
+            <%= @driver.address %>
+          </p>
+
+          <p>
+            <strong>Id proof:</strong>
+            <%= @driver.id_proof %>
+          </p>
+
+          <p>
+            <strong>Additional:</strong>
+            <%= @driver.additional_id %>
+          </p>
+
+          <%= link_to 'Edit', edit_driver_path(@driver), class: "btn btn-primary mt-3" %> 
+          <%= link_to 'Back', drivers_path,class: "btn btn-secondary mt-3 " %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div id="map">
+
+      </div>  
+    </div>
+  </div>
+</div>
+
+<script 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDZdExYkM__EAvEN633_8iHm-BWm9q7wY">
+</script>
+
+<script>
+  var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      center: new google.maps.LatLng(<%= @driver.latitude %>, <%= @driver.longitude %>),
+      disableDefaultUI: true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+  var infowindow = new google.maps.InfoWindow();
+
+  var marker, i;
+  
+  marker = new google.maps.Marker({
+    position: new google.maps.LatLng(<%= @driver.latitude %>, <%= @driver.longitude %>),
+    map: map
+  });
+
+  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    return function() {
+      infowindow.setContent("<%= @driver.address %>");
+      infowindow.open(map, marker);
+    }
+  })(marker, i));
+    
+</script>
+
+
+<style type="text/css">
+  #map {
+    width: 700px;
+    height: 675px;
+}
+
+</style>

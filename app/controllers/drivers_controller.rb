@@ -1,33 +1,21 @@
 class DriversController < ApplicationController
   before_action :set_driver, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
-
+   
   def index
-    @drivers = Driver.all
-  end
-
-  def show;end
+    @drivers = current_user.agency.drivers
+  end 
 
   def new
-    @driver = Driver.new
+    @agency = current_user.agency
   end
 
-  def edit;end
-   
   def create
-    @driver = Driver.new(driver_params)
-
-    respond_to do |format|
-      if @driver.save
-        format.html { redirect_to @driver, notice: 'Driver was successfully created.' }
-        format.json { render :show, status: :created, location: @driver }
-      else
-        format.html { render :new }
-        format.json { render json: @driver.errors, status: :unprocessable_entity }
-      end
-    end
+    @agency = Agency.find(params[:agency_id])
+    @driver = @agency.drivers.create(driver_params)  
+    redirect_to agency_path(@agency) 
   end
-
+ 
   def update
     respond_to do |format|
       if @driver.update(driver_params)

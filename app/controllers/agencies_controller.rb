@@ -2,11 +2,8 @@ class AgenciesController < ApplicationController
   before_action :set_agency, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  def index
-    @agencies = Agency.all
-  end
-
   def show
+    @agency = current_user.agency
   end
 
   def new
@@ -56,6 +53,6 @@ class AgenciesController < ApplicationController
     end
 
     def agency_params
-      params.require(:agency).permit(:name, :cover_image, :logo)
+      params.require(:agency).permit(:name, :cover_image, :logo, :user_id)
     end
 end
