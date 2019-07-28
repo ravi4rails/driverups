@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_110752) do
+ActiveRecord::Schema.define(version: 2019_07_25_091920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_07_22_110752) do
     t.string "first_name"
     t.string "last_name"
     t.string "contact_1"
-    t.string "conatct_2"
+    t.string "contact_2"
     t.string "city"
     t.string "state"
     t.string "country"
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 2019_07_22_110752) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "agency_id"
+    t.string "zipcode"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["agency_id"], name: "index_drivers_on_agency_id"
   end
 

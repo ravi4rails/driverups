@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     resources :users
     get 'dashboard'  => 'sites#dashboard'
   end  
+  get '/search_drivers' => "home#search_drivers"
+
 end

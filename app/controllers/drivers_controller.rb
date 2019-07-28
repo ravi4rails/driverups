@@ -1,29 +1,19 @@
 class DriversController < ApplicationController
   before_action :set_driver, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
-  # GET /drivers
-  # GET /drivers.json
   def index
     @drivers = Driver.all
   end
 
-  # GET /drivers/1
-  # GET /drivers/1.json
-  def show
-  end
+  def show;end
 
-  # GET /drivers/new
   def new
     @driver = Driver.new
   end
 
-  # GET /drivers/1/edit
-  def edit
-  end
-
-  # POST /drivers
-  # POST /drivers.json
+  def edit;end
+   
   def create
     @driver = Driver.new(driver_params)
 
@@ -38,8 +28,6 @@ class DriversController < ApplicationController
     end
   end
 
-  # PATCH/PUT /drivers/1
-  # PATCH/PUT /drivers/1.json
   def update
     respond_to do |format|
       if @driver.update(driver_params)
@@ -52,8 +40,6 @@ class DriversController < ApplicationController
     end
   end
 
-  # DELETE /drivers/1
-  # DELETE /drivers/1.json
   def destroy
     @driver.destroy
     respond_to do |format|
@@ -63,13 +49,11 @@ class DriversController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_driver
       @driver = Driver.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def driver_params
-      params.require(:driver).permit(:first_name, :last_name, :contact_1, :conatct_2, :city, :state, :country, :address, :id_proof, :additional_id, :profile_image)
+      params.require(:driver).permit!
     end
 end

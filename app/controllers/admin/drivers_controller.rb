@@ -1,75 +1,65 @@
-class Admin::DriversController < AdminController
-  before_action :set_driver, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+module Admin
+  class DriversController < BaseController
+    before_action :set_driver, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!
+    load_and_authorize_resource
+    
+    def index
+      @drivers = Driver.all
+    end
 
-  # GET /drivers
-  # GET /drivers.json
-  def index
-    @drivers = Driver.all
-  end
+    def show
+    end
 
-  # GET /drivers/1
-  # GET /drivers/1.json
-  def show
-  end
+    def new
+      @driver = Driver.new
+    end
 
-  # GET /drivers/new
-  def new
-    @driver = Driver.new
-  end
+    def edit
+    end
 
-  # GET /drivers/1/edit
-  def edit
-  end
+    def create
+      @driver = Driver.new(driver_params)
 
-  # POST /drivers
-  # POST /drivers.json
-  def create
-    @driver = Driver.new(driver_params)
-
-    respond_to do |format|
-      if @driver.save
-        format.html { redirect_to admin_drivers_path, notice: 'Driver was successfully created.' }
-        format.json { render :show, status: :created, location: @driver }
-      else
-        format.html { render :new }
-        format.json { render json: @driver.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @driver.save
+          format.html { redirect_to admin_drivers_path, notice: 'Driver was successfully created.' }
+          format.json { render :show, status: :created, location: @driver }
+        else
+          format.html { render :new }
+          format.json { render json: @driver.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
 
-  # PATCH/PUT /drivers/1
-  # PATCH/PUT /drivers/1.json
-  def update
-    respond_to do |format|
-      if @driver.update(driver_params)
-        format.html { redirect_to admin_drivers_path, notice: 'Driver was successfully updated.' }
-        format.json { render :show, status: :ok, location: @driver }
-      else
-        format.html { render :edit }
-        format.json { render json: @driver.errors, status: :unprocessable_entity }
+    def update
+      respond_to do |format|
+        if @driver.update(driver_params)
+          format.html { redirect_to admin_drivers_path, notice: 'Driver was successfully updated.' }
+          format.json { render :show, status: :ok, location: @driver }
+        else
+          format.html { render :edit }
+          format.json { render json: @driver.errors, status: :unprocessable_entity }
+        end
       end
     end
+
+    def destroy
+      @driver.destroy
+      respond_to do |format|
+        format.html { redirect_to admin_drivers_url, notice: 'Driver was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    end
+
+    private
+    
+      def set_driver
+        @driver = Driver.find(params[:id])
+      end
+
+      def driver_params
+        params.require(:driver).permit(:first_name, :last_name, :contact_1, :contact_2, :city, :state, :country, :address, :id_proof, :additional_id, :profile_image, :zipcode, :latitude, :longitude)
+      end
   end
-
-  # DELETE /drivers/1
-  # DELETE /drivers/1.json
-  def destroy
-    @driver.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_drivers_url, notice: 'Driver was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_driver
-      @driver = Driver.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def driver_params
-      params.require(:driver).permit(:first_name, :last_name, :contact_1, :conatct_2, :city, :state, :country, :address, :id_proof, :additional_id, :profile_image)
-    end
 end

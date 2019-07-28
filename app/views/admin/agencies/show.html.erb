@@ -8,12 +8,12 @@
 
       <p>
         <strong>Cover image:</strong>
-        <%= @agency.cover_image %>
+        <%= image_tag @agency.cover_image_url, class: "rounded-circle",  style: "width:150px;height:100px;" %>
       </p>
 
       <p>
         <strong>Logo:</strong>
-        <%= @agency.logo %>
+        <%= image_tag @agency.logo_url, class: "rounded-circle", style: "width:150px;height:100px;" %>
       </p>
 
       <%= link_to 'Edit', edit_admin_agency_path(@agency), class: "btn btn-secondary btn-sm" %> |

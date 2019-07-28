@@ -2,6 +2,11 @@
   <div class="card">
     <div class="card-body">            
       <p>
+        <strong>Profile image:</strong>
+        <%= image_tag @driver.profile_image_url, class: "rounded-circle", style: "width:175px;height:175px;" %>
+      </p>
+
+      <p>
         <strong>First name:</strong>
         <%= @driver.first_name %>
       </p>
@@ -17,8 +22,8 @@
       </p>
 
       <p>
-        <strong>Conatct 2:</strong>
-        <%= @driver.conatct_2 %>
+        <strong>Contact 2:</strong>
+        <%= @driver.contact_2 %>
       </p>
 
       <p>
@@ -51,11 +56,7 @@
         <%= @driver.additional_id %>
       </p>
 
-      <p>
-        <strong>Profile image:</strong>
-        <%= @driver.profile_image %>
-      </p>
-
+      
       <%= link_to 'Edit', edit_admin_driver_path(@driver),class: "btn btn-secondary btn-sm" %> |
       <%= link_to 'Back', admin_drivers_path, class: "btn btn-primary btn-sm" %>
     </div>

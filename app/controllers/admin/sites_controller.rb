@@ -1,6 +1,5 @@
-class Admin::SitesController < ApplicationController
-  load_and_authorize_resource
-
-  layout 'admin'
-  def dashboard;end
+module Admin 
+  class SitesController < BaseController
+    def dashboard;end
+  end
 end

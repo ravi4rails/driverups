@@ -1,5 +1,14 @@
-<h1>New Driver</h1>
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-header">
+      <h1>New Driver</h1>      
+    </div>
+    <div class="card-body">      
+      <%= render 'form', driver: @driver %>
 
-<%= render 'form', driver: @driver %>
+      <%= link_to 'Back', drivers_path, class: "btn btn-secondary mt-2" %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Back', drivers_path %>
+
