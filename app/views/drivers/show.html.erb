@@ -56,9 +56,7 @@
             <strong>Additional:</strong>
             <%= @driver.additional_id %>
           </p>
-
-          <%= link_to 'Edit', edit_driver_path(@driver), class: "btn btn-primary mt-3" %> 
-          <%= link_to 'Back', drivers_path,class: "btn btn-secondary mt-3 " %>
+          <%= link_to 'Edit', edit_agency_driver_path(@agency, @driver), class: "btn btn-primary" %>
         </div>
       </div>
     </div>

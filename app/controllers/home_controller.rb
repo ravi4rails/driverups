@@ -6,7 +6,8 @@ class HomeController < ApplicationController
   def index
     @drivers = Driver.last(6)
   end 
-
+  
+  
   def search_drivers
     if params[:q][:latitude].present? && params[:q][:longitude].present?
       lat = params[:q][:latitude]

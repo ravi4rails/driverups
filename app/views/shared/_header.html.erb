@@ -4,8 +4,12 @@
     <ul class="navbar-nav">
      <% if user_signed_in? %>
        <li class="nav-item">
-         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger rounded-0" %>    
-         <%= link_to 'Agency', agency_path(current_user.agency), class: "btn btn-primary" %>        
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger rounded-0" %> 
+          <% if current_user.agency.present? %>   
+            <%= link_to 'Agency', agency_path(current_user.agency), class: "btn btn-primary" %>
+          <% else %>   
+             <%= link_to 'New Agency', new_agency_path(@agency), class: "btn btn-primary" %>
+          <% end %>      
        </li>
        <% else %>
        <li class="nav-item">

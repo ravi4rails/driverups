@@ -1,71 +1,19 @@
-<div class="col-md-4">
+<div class="col-12 col-md-4">
   <div class="card mt-4">
-    <div class="card-body text-center">        
-      <p>
-       <%= image_tag "driver.jpg", class: "rounded-circle image" %>
-      </p>
-
-      <p>
-       <strong>First name:</strong>
-       <%= driver.first_name %>
-      </p>
-
-      <p>
-        <strong>Last name:</strong>
-        <%= driver.last_name %>
-      </p>
-
-      <p>
-        <strong>Contact 1:</strong>
-        <%= driver.contact_1 %>
-      </p>
-
-      <p>
-        <strong>Contact 2:</strong>
-        <%= driver.contact_2 %>
-      </p>
-
-      <p>
-        <strong>City:</strong>
-        <%= driver.city %>
-      </p>
-
-      <p>
-        <strong>State:</strong>
-        <%= driver.state %>
-      </p>
-
-      <p>
-        <strong>Country:</strong>
-        <%= driver.country %>
-      </p>
-
-      <p>
-        <strong>Address:</strong>
-        <%= driver.address %>
-      </p>
-
-      <p>
-        <strong>Zip code:</strong>
-        <%= driver.zipcode %>
-      </p>
-
-      <p>
-        <strong>Id proof:</strong>
-        <%= driver.id_proof %>
-      </p>
-
-      <p>
-        <strong>Additional:</strong>
-        <%= driver.additional_id %>
-      </p>
-
-      <p>
+    <div class="card-body">
+      <div class="text-center">
+        <%= image_tag "driver.jpg", class: "rounded-circle image" %>
+        <h5 class="font-weight-bold mt-3"><%= driver.full_name %></h5>
+        <h6 data-toggle="tooltip" data-placement="top" title="<%= driver.address.capitalize %>"><%= truncate(driver.address.capitalize, length: 20) %></h6>
+        <h5 class="text-dark"><%= driver.country %></h5>      
+        <%= link_to agency_driver_path(@agency), class: "btn btn-primary" do %>
+         <i class="fa fa-eye"></i> <span>Show</span>
+        <% end %>
+        <%= link_to 'Edit', edit_agency_driver_path(@agency, driver), class: "btn btn-primary" %>
         <%= link_to 'Delete driver', [driver.agency, driver],
         method: :delete,
-        data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>
-      </p>
-      <%#= link_to "Show", agency_driver_path, class: "btn btn-primary" %>
+        data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>   
+      </div>
     </div>
-  </div>
+  </div>      
 </div>

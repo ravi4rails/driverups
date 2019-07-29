@@ -1,4 +1,4 @@
-<%= form_with(model:[ @agency, @agency.drivers.build ], local: true, html: {id: 'driver_form'}) do |form| %>
+<%= form_with(model: @driver, url: [ @agency, @driver ], local: true, html: {id: 'driver_form'}) do |form| %>
   <%= form.hidden_field :latitude, id: :latitude %>
   <%= form.hidden_field :longitude, id: :longitude %>
   <%= form.hidden_field :agency_id, value: @agency.id %>
