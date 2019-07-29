@@ -10,6 +10,11 @@ class DriversController < ApplicationController
     @agency = current_user.agency
   end
 
+  def show
+    @agency = Agency.find(params[:agency_id])
+    @driver = @agency.drivers.find(params[:id])
+  end
+
   def create
     @agency = Agency.find(params[:agency_id])
     @driver = @agency.drivers.create(driver_params)  
@@ -29,11 +34,10 @@ class DriversController < ApplicationController
   end
 
   def destroy
+    @agency = Agency.find(params[:agency_id])
+    @driver = @agency.drivers.find(params[:id])
     @driver.destroy
-    respond_to do |format|
-      format.html { redirect_to drivers_url, notice: 'Driver was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to agency_path(@agency)
   end
 
   private
