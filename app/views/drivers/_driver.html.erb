@@ -1,4 +1,4 @@
-<div class="col-12 col-md-4">
+<div class="col-12 col-md-3">
   <div class="card mt-4">
     <div class="card-body">
       <div class="text-center">
@@ -6,7 +6,7 @@
         <h5 class="font-weight-bold mt-3"><%= driver.full_name %></h5>
         <h6 data-toggle="tooltip" data-placement="top" title="<%= driver.address.capitalize %>"><%= truncate(driver.address.capitalize, length: 20) %></h6>
         <h5 class="text-dark"><%= driver.country %></h5>      
-        <%= link_to agency_driver_path(@agency), class: "btn btn-primary" do %>
+        <%= link_to agency_driver_path(@agency, driver), class: "btn btn-primary" do %>
          <i class="fa fa-eye"></i> <span>Show</span>
         <% end %>
         <%= link_to 'Edit', edit_agency_driver_path(@agency, driver), class: "btn btn-primary" %>

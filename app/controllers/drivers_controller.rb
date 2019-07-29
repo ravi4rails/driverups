@@ -2,15 +2,15 @@ class DriversController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_driver, only: [:show, :edit, :update, :destroy]
   before_action do 
-    @agency = Agency.find(params[:agency_id])
+    @agency = current_user.agency
   end 
    
   def index
-    @drivers = current_user.agency.drivers
+    @drivers = @agency.drivers
   end 
 
   def new
-    @agency = current_user.agency
+    @driver = @agency.drivers.build
   end
 
   def show
@@ -19,7 +19,14 @@ class DriversController < ApplicationController
 
   def create
     @driver = @agency.drivers.create(driver_params)  
-    redirect_to agency_path(@agency) 
+    redirect_to agency_path(@agency), notice: 'Driver was successfully created.'
+    # if @driver.save
+    #   format.html {  }
+    #   format.json { render :show, status: :ok, location: @driver }
+    # else
+    #   format.html { render :new }
+    #   format.json { render json: agency_path(@agency).errors, status: :unprocessable_entity }
+    # end
   end
 
   def edit
@@ -41,7 +48,7 @@ class DriversController < ApplicationController
   def destroy
     @driver = @agency.drivers.find(params[:id])
     @driver.destroy
-    redirect_to agency_path(@agency)
+    redirect_to agency_path(@agency), notice: 'Driver was successfully deleted.'
   end
 
   private

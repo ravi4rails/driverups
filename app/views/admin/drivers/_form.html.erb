@@ -52,7 +52,6 @@
     <%= form.text_field :country, class: "form-control rounded-0", id: :country, disabled: true  %>
   </div>
 
-
   <div class="form-group">
     <%= form.label :id_proof %>
     <%= form.text_field :id_proof, class: "form-control rounded-0" %>
@@ -66,6 +65,10 @@
   <div class="form-group">
     <%= form.label :profile_image %>
     <%= form.file_field :profile_image %>
+  </div>
+  
+  <div>
+    <%= form.select :agency_id, options_for_select(Agency.all.map {|agency| [agency.name, agency.id]}, selected: form.object.try(:agency_id)), { include_blank: "Select Agency" }, { class: "form-control form-control-line mb-2", required: true } %>
   </div>
 
   <div class="actions">
