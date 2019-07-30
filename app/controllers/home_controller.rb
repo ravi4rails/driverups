@@ -7,11 +7,10 @@ class HomeController < ApplicationController
     @drivers = Driver.last(6)
   end 
   
-  
   def search_drivers
-    if params[:q][:latitude].present? && params[:q][:longitude].present?
-      lat = params[:q][:latitude]
-      long = params[:q][:longitude]
+    if params[:latitude].present? && params[:longitude].present?
+      lat = params[:latitude]
+      long = params[:longitude]
       @drivers = Driver.near([lat, long], 20, units: :km)
     else
       @drivers = @q.result(distinct: true)
