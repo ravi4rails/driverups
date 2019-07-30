@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :users
     get 'dashboard'  => 'sites#dashboard'
   end  
-  get '/search_drivers' => "home#search_drivers"
-
+  get '/search_drivers' => 'home#search_drivers'
+  get '/about' => 'static_pages#about'
+  get '/contact' => 'static_pages#contact'
+  get '/services' => 'static_pages#services'
 end

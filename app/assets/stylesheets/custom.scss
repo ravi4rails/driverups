@@ -9,16 +9,6 @@
 .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
     color: #ffffff;
 }
-.nav-list li {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.nav-list li a:hover:before {
-    margin-left: 0;
-    opacity: 1;
-    visibility: visible;
-}
 
 ul, ol {
     list-style: none;
@@ -40,6 +30,6 @@ ul, ol {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.mt-7{
-  margin-top: 280px;
+.nav-link{
+    color: white !important;
 }

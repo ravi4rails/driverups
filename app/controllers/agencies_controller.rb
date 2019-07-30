@@ -4,7 +4,7 @@ class AgenciesController < ApplicationController
 
   def show
     @agency = current_user.agency
-    @q = Driver.ransack(params[:q])
+    @q = @agency.drivers.ransack(params[:q])
     @drivers = @q.result(distinct: true)
   end
 
