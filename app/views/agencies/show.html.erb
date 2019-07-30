@@ -1,29 +1,42 @@
 <div class="container-fluid">
   <div class="card mt-4">
     <div class="card-body">
-      <p>
+      <div>
         <strong>Name:</strong>
         <%= @agency.name %>
-      </p>
+      </div>
 
-       <p>
+      <div>
         <strong>Cover image:</strong>
         <%= image_tag @agency.cover_image_url, class: "rounded-circle", style: "width:50px;height:100px;" %>
-      </p>
+      </div>
 
-      <p>
+      <div>
         <strong>Logo:</strong>
         <%= image_tag @agency.logo_url, class: "rounded-circle", style: "width:50px;height:100px;" %>
-      </p> 
-      <%= link_to 'New Driver', new_agency_driver_path(@agency), class: "btn btn-secondary" %> 
+      </div> 
+      <%= link_to 'New Driver', new_agency_driver_path(@agency), class: "btn btn-info" %> 
       <%= link_to 'Edit', edit_agency_path(@agency), class: "btn btn-primary" %>      
     </div>
+  </div>
+  <div>
+    <%= search_form_for @q, url: :agency do |f| %>
+      <%= f.search_field :first_name_or_last_name_cont, placeholder: "Name", class: "form-control mt-3" %>
+      <%= f.submit "Search", class: "btn btn-secondary mt-2" %>
+      <%= link_to "Reset", @agency, class: "btn btn-primary mt-2" %>
+    <% end %>      
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="row">
-      <%= render @agency.drivers %>        
+        <%= render @drivers %>        
       </div>
     </div>
   </div>   
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });  
+</script>
