@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="card mt-4">
     <div class="card-body">
       <div>
@@ -8,15 +8,17 @@
 
       <div>
         <strong>Cover image:</strong>
-        <%= image_tag @agency.cover_image_url, class: "rounded-circle", style: "width:50px;height:100px;" %>
+        <%= image_tag @agency.cover_image_url, class: "w-25" %>
       </div>
 
       <div>
         <strong>Logo:</strong>
-        <%= image_tag @agency.logo_url, class: "rounded-circle", style: "width:50px;height:100px;" %>
+        <%= image_tag @agency.logo_url, class: "w-25" %>
       </div> 
-      <%= link_to 'New Driver', new_agency_driver_path(@agency), class: "btn btn-info" %> 
-      <%= link_to 'Edit', edit_agency_path(@agency), class: "btn btn-primary" %>      
+      <div class="mt-2">
+        <%= link_to 'New Driver', new_agency_driver_path(@agency), class: "btn btn-info" %> 
+        <%= link_to 'Edit', edit_agency_path(@agency), class: "btn btn-primary" %>             
+      </div>
     </div>
   </div>
   <div>
@@ -27,7 +29,7 @@
     <% end %>      
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 mb-5">
       <div class="row">
         <%= render @drivers %>        
       </div>
