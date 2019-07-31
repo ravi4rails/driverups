@@ -67,3 +67,5 @@ gem 'ransack'
 gem "font-awesome-rails"
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'geocoder'
+gem "letter_opener", :group => :development
+gem 'letter_opener_web'

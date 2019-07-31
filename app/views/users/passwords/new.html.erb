@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 mx-auto">
-      <div class="card">
+    <div class="col-md-8 mx-lg-auto col-lg-4 mx-md-auto">
+      <div class="card mt-3 mb-3">
         <div class="card-header">
           <h2>Forgot your password?</h2>      
         </div>
@@ -9,14 +9,14 @@
           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-          <div class="form-group">
-            <%= f.label :username %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-          </div>
+            <div class="form-group">
+              <%= f.label :username %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            </div>
 
-          <div class="actions">
-            <%= f.submit "Send me reset password instructions", class: 'btn btn-primary mt-2' %>
-          </div>
+            <div class="actions">
+              <%= f.submit "Reset password", class: 'btn btn-primary mt-2' %>
+            </div>
           <% end %>
           <%= render "users/shared/links" %>      
         </div>
