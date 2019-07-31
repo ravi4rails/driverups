@@ -5,16 +5,18 @@
         <%= image_tag "driver.jpg", class: "rounded-circle image" %>
         <h5 class="font-weight-bold mt-3"><%= driver.full_name %></h5>
         <h6 data-toggle="tooltip" data-placement="top" title="<%= driver.address.capitalize %>"><%= truncate(driver.address.capitalize, length: 20) %></h6>
-        <h5 class="text-dark"><%= driver.country %></h5>      
-        <%= link_to agency_driver_path(@agency, driver), class: "btn btn-success waves-effect waves-light btn-sm" do %>
-         <i class="fa fa-eye"></i> <span>Show</span>
-        <% end %>
-        <%= link_to edit_agency_driver_path(@agency, driver), class: "btn btn-primary waves-effect waves-light btn-sm" do %>    <i class="fa fa-edit"></i> <span>Edit</span>
-        <% end %>
-        <%= link_to [driver.agency, driver],
-          method: :delete,
-          data: { confirm: 'Are you sure?' }, class: "btn btn-danger waves-effect waves-light btn-sm" do %><i class="fa fa-trash"></i> <span>Delete</span>   
-        <% end %>
+        <h5 class="text-dark"><%= driver.country %></h5>
+        <div class="btn-group">
+          <%= link_to agency_driver_path(@agency, driver), class: "btn btn-success waves-effect waves-light btn-sm" do %>
+           <i class="fa fa-eye"></i> <span>Show</span>
+          <% end %>
+          <%= link_to edit_agency_driver_path(@agency, driver), class: "btn btn-primary waves-effect waves-light btn-sm" do %>    <i class="fa fa-edit"></i> <span>Edit</span>
+          <% end %>
+          <%= link_to [driver.agency, driver],
+            method: :delete,
+            data: { confirm: 'Are you sure?' }, class: "btn btn-danger waves-effect waves-light btn-sm" do %><i class="fa fa-trash"></i> <span>Delete</span>   
+          <% end %>
+        </div>      
       </div>
     </div>
   </div>      
