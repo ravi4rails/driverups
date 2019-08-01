@@ -27,42 +27,40 @@
   </div>
 </div>
   
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAC1cqAmyA4B5g45X12AYT61H3XLUzUQxs"></script> 
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDZdExYkM__EAvEN633_8iHm-BWm9q7wY"></script> 
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    var locations = [];
+  var locations = [];
 
-    <% @drivers.each do |driver| %>
-    locations.push(["<%= driver.full_name %>", <%= driver.latitude %>, <%= driver.longitude %>])
-    <% end %>
+  <% @drivers.each do |driver| %>
+  locations.push(["<%= driver.full_name %>", <%= driver.latitude %>, <%= driver.longitude %>])
+  <% end %>
 
-    console.log(locations);
+  console.log(locations);
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 11,
-      center: new google.maps.LatLng(locations[0][1], locations[0][2]),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 11,
+    center: new google.maps.LatLng(locations[0][1], locations[0][2]),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  var infowindow = new google.maps.InfoWindow();
+
+  var marker, i;
+
+  for (i = 0; i < locations.length; i++) {  
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+      map: map
     });
 
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }
-  });  
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+        infowindow.setContent(locations[i][0]);
+        infowindow.open(map, marker);
+      }
+    })(marker, i));
+  }
 </script>
 
 <script type="text/javascript">
