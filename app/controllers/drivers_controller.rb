@@ -2,8 +2,8 @@ class DriversController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_driver, only: [:show, :edit, :update, :destroy]
   before_action do 
-    @agency = current_user.agency
-  end 
+    @agency = Agency.find(params[:agency_id])
+  end  
    
   def index
     @drivers = @agency.drivers
@@ -60,3 +60,4 @@ class DriversController < ApplicationController
       params.require(:driver).permit!
     end  
 end
+

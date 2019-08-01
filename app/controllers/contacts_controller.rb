@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
   @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.contact_email(@contact).deliver_now
-      redirect_to root_url       
+      redirect_to root_url, notice: 'Contact was successfully created.'       
     end
  end
 
