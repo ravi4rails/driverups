@@ -56,10 +56,9 @@
     <%= form.label :additional_id %>
     <%= form.select :additional_id, options_for_select(Driver::PROOF, selected: form.object.try(:additional_id)), {include_blank: "Select Additonal proof"}, { class: "form-control form-control-line", required: true } %>
   </div>
-  <div id="text_div" class="text-danger mb-2"></div>
+  <div id="text_div"></div>
 
   <div class="form-group" id="additional_proof_div" style="display:none">
-    <%= form.label :additional_proof %>
     <%= form.file_field :additional_proof %>
   </div>
 
@@ -79,7 +78,7 @@
 <script type="text/javascript">
   $('#driver_additional_id').change(function(){
     if($('#driver_additional_id').val() !== "") {
-      $('#text_div').html("Upload " + $('#driver_additional_id').val() + "  as your additional proof")
+      $('#text_div').html($('#driver_additional_id').val())
       $('#additional_proof_div').show();
     }else{
       $('#additional_proof_div').hide();
