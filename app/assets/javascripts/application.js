@@ -13,6 +13,8 @@
 //= require rails-ujs
 //= require jquery_with_bootstrap
 //= require jquery_validation
+//= require user_form_validation
+//= require user_sign_up_validation
 //= require agency_form_validation
 //= require driver_form_validation
 //= require autofill_map

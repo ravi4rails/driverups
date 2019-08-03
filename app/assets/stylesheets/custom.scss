@@ -37,3 +37,38 @@ ul, ol {
 .font-16 {
     font-size:16px !important;
 }
+.jumbotron-mb-0 {
+    margin-bottom:0px;
+}
+.vl {
+  border-left: 1px solid grey;
+  height: 379px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+}
+.vl2 {
+  border-left: 1px solid grey;
+  height: 406px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+}
+ .social-login{
+    width:300px;
+    margin:0 auto;
+    margin-bottom: 14px;
+}
+
+.facebook-btn{  background-color:#3C589C; }
+
+.google-btn{ background-color: #DF4B3B; } 
+
+.social-btn{
+    font-weight: 100;
+    color:white;
+    width:290px;
+}    
+
