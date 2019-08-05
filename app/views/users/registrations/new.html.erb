@@ -37,10 +37,15 @@
           <div class="col-md-6">
             <div class="social-login">
               <div class="mt-5">
-                <button class="btn facebook-btn social-btn" type="button"><span><i class="fa fa-facebook-f"></i> Sign up with Facebook</span> </button>                
+                <%= link_to user_facebook_omniauth_authorize_path, class: "btn facebook-btn social-btn" do %>
+                  <i class="fa fa-facebook-f"></i> Sign in with Facebook
+                <% end %>                
               </div>
+
               <div class="mt-5">
-                <button class="btn google-btn social-btn" type="button"><span><i class="fa fa-google-plus-g"></i> Sign up with Google+</span> </button>   
+                <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn google-btn social-btn" do %>
+                 <i class="fa fa-google-plus-g"></i> Sign in with Google
+                <% end %>   
               </div>
             </div>
           </div>  
