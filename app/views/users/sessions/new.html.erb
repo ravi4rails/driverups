@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-9 mx-auto mb-5">
+    <div class="col-lg-9 mx-lg-auto  mb-5">
       <div class="card mt-5">
         <div class="row">
-          <div class="col-md-6"> 
+          <div class="col-lg-6 col-12 border-right"> 
             <h2>Log in</h2>    
             <div class="card-body">      
               <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'user_form'}) do |f| %>
@@ -28,23 +28,22 @@
                 <%= f.submit "Log in", class:'btn btn-secondary' %>
               </div>
               <% end %>
-              <%= render "users/shared/links" %>
             </div>    
-          </div>          
-          <div class="vl"></div>
-          <div class="col-md-6">
+          </div>
+          <div class="col-lg-6 col-12">
             <div class="social-login">
               <div class="mt-5">
                 <%= link_to user_facebook_omniauth_authorize_path, class: "btn facebook-btn social-btn" do %>
-                  <i class="fa fa-facebook-f"></i> Sign in with Facebook
+                <i class="fa fa-facebook-f"></i> Sign in with Facebook
                 <% end %> 
-              <div class="mt-5">
-                <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn google-btn social-btn" do %>
-                 <i class="fa fa-google-plus-g"></i> Sign in with Google
-                <% end %>  
+                <div class="mt-5">
+                  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn google-btn social-btn" do %>
+                  <i class="fa fa-google-plus"></i> Sign in with Google
+                  <% end %>  
+                </div>
               </div>
-            </div>
-          </div>   
+            </div>   
+          </div>
         </div>
       </div>
     </div>
