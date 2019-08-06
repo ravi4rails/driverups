@@ -1,51 +1,48 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-9 mx-lg-auto  mb-5">
-      <div class="card mt-5">
+<div class="card">
+  <div class="row no-gutters">
+    <div class="col-lg-6 col-12">
+      <div class="image-holder">
+        <%= image_tag "img1.jpg", class: "bg"%>
+      </div>   
+    </div>
+    <div class="col-lg-6 col-12 bg-2"> 
+      <div class="card-body mt-3">
         <div class="row">
-          <div class="col-lg-6 col-12 border-right"> 
-            <h2>Log in</h2>    
-            <div class="card-body">      
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'user_form'}) do |f| %>
-              <div class="form-group">
-                <%= f.label :username %><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <div class="offset-md-2 col-md-8">
+            <h3>Get more things done with Loggin platform.</h3>
+            <p>Access to the most powerfull tool in the entire design and web industry.</p>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'user_form'}) do |f| %>
+              <div class="form-group mt-4">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "username", class: "form-control" %>
               </div>
 
-              <div class="form-group">
-                <%= f.label :password %><br />
-                <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+              <div class="form-group mt-4">
+                <%= f.password_field :password, autocomplete: "current-password", placeholder: "password", class: "form-control" %>
               </div>
 
               <% if devise_mapping.rememberable? %>
-              <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              </div>
-              <% end %>
-
-              <div class="actions">
-                <%= f.submit "Log in", class:'btn btn-secondary' %>
-              </div>
-              <% end %>
-            </div>    
-          </div>
-          <div class="col-lg-6 col-12">
-            <div class="social-login">
-              <div class="mt-5">
-                <%= link_to user_facebook_omniauth_authorize_path, class: "btn facebook-btn social-btn" do %>
-                <i class="fa fa-facebook-f"></i> Sign in with Facebook
-                <% end %> 
-                <div class="mt-5">
-                  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn google-btn social-btn" do %>
-                  <i class="fa fa-google-plus"></i> Sign in with Google
-                  <% end %>  
+                <div class="field mt-3">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
                 </div>
+              <% end %>              
+              <div class="actions mt-4">
+                <%= f.submit "Log in", class: "btn btn-default btn-sm bg-white text-dark" %>
+                <%= link_to "Forgot your password?", new_password_path(resource_name), class: "ml-3 text-white font-12" %>
               </div>
-            </div>   
+            <% end %>
+            <div class="other-links mt-5">
+              <span class="font-12">Or login with</span>
+              <%= link_to user_facebook_omniauth_authorize_path do %>
+               <span class="text-white ml-3">Facebook</span>
+              <% end %>
+              <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+               <span class="text-white ml-3">Google</span>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+      </div>    
     </div>
   </div>
 </div>
