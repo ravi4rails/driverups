@@ -304,5 +304,5 @@ Devise.setup do |config|
     config.omniauth :facebook, Rails.application.credentials[:facebook][:app_id], Rails.application.credentials[:facebook][:app_secret_key], callback_url: "http://localhost:3000/users/auth/facebook/callback", scope: "email"
 
     config.omniauth :google_oauth2, Rails.application.credentials[:google][:client_id], Rails.application.credentials[:google][:secret_key], callback_url: "http://localhost:3000/users/auth/google_oauth2/callback", scope: "email"
-  end  
+  end   
 end

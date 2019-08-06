@@ -40,27 +40,6 @@ ul, ol {
 .jumbotron-mb-0 {
     margin-bottom:0px;
 }
-.vl {
-  border-left: 1px solid grey;
-  height: 327px;
-  position: absolute;
-  left: 50%;
-  margin-left: -3px;
-  top: 0;
-}
-.vl2 {
-  border-left: 1px solid grey;
-  height: 381px;
-  position: absolute;
-  left: 50%;
-  margin-left: -3px;
-  top: 0;
-}
- .social-login{
-    width:300px;
-    margin:0 auto;
-    margin-bottom: 14px;
-}
 
 .facebook-btn{  background-color:#3C589C; }
 
@@ -75,7 +54,7 @@ ul, ol {
 .image-holder .bg{
   opacity: 0.5;
   width: 100%;
-  height: 500px;
+  height: 668px;
 }
 .font-12{
   font-size: 12px;
@@ -89,4 +68,6 @@ ul, ol {
   background-color: #0093FF;
   color: white;
 }
-
+.mt-9{
+  margin-top: 50px;
+}
