@@ -1,4 +1,3 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
@@ -12,4 +11,10 @@
 //
 //= require rails-ujs
 //= require jquery_with_bootstrap
-//= require turbolinks
+//= require jquery_validation
+//= require user_form_validation
+//= require user_sign_up_validation
+//= require agency_form_validation
+//= require driver_form_validation
+//= require autofill_map
+//= require activestorage
