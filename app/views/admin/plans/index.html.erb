@@ -1,0 +1,38 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Listing Plan</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @plans.each do |plan| %>
+            <tr>
+              <td><%= plan.name %></td>
+              <td><%= plan.price %></td>
+              <td>
+                <%= link_to 'Show',admin_plan_path(plan), class: "btn btn-primary btn-sm" %>
+                <%= link_to 'Edit',edit_admin_plan_path(plan), class: "btn btn-warning btn-sm" %>
+                <%= link_to 'Destroy',admin_plan_path(plan), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+              </td>
+            </tr>
+          <% end %>  
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'New plan' ,new_admin_plan_path, class: 'btn btn-primary btn-sm', data: {turbolinks: false} %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#dataTable').DataTable();
+  });
+</script>

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row mt-5 mb-5">
+    <div class="col-md-10 mx-md-auto">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="card rounded-0">
+            <div class="card-body">
+              <h1 class="text-center text-primary font-weight-bold font-50"><%= @plan.name %></h1>
+              <h3 class="text-center text-dark font-weight-bold font-35"><i class="fa fa-dollar text-dark mr-2"></i><%= @plan.price %></h3>
+              <div class="pl-3 mt-3">
+                <% @plan.features.each do |feature| %>
+                  <p class="font-14"><i class="fa fa-check mr-2 text-success"></i><%= feature.title %></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <h3 class="text-primary font-weight-bold">Hi, <%= current_user.nickname %></h3>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td><strong>Amount</strong></td>
+                <td>$<%= @plan.price %></td>
+              </tr>
+              <tr>
+                <td><strong>TAX</strong></td>
+                <td>10%</td>
+              </tr>
+                <td><strong>Total Amount</strong></td>
+                <td><strong>$<%= (0.1 * @plan.price) + @plan.price %></strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

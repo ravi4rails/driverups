@@ -1,0 +1,12 @@
+<%= form_for [:admin, @feature], html: { id: "feature_form"}  do |form| %>
+  <%= render "partials/errors", object: @feature %>
+  <div class="form-group">
+    <%= form.label 'Title' %>
+    <%= form.text_field :title, class: 'form-control rounded-0' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+

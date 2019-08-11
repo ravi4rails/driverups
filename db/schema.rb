@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_070007) do
+ActiveRecord::Schema.define(version: 2019_08_08_134952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_070007) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.boolean "is_subscribed", default: false
     t.index ["user_id"], name: "index_agencies_on_user_id"
   end
 
@@ -67,6 +68,28 @@ ActiveRecord::Schema.define(version: 2019_08_05_070007) do
     t.index ["agency_id"], name: "index_drivers_on_agency_id"
   end
 
+  create_table "features", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plan_features", force: :cascade do |t|
+    t.bigint "plan_id"
+    t.bigint "feature_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_plan_features_on_feature_id"
+    t.index ["plan_id"], name: "index_plan_features_on_plan_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -92,4 +115,6 @@ ActiveRecord::Schema.define(version: 2019_08_05_070007) do
 
   add_foreign_key "agencies", "users"
   add_foreign_key "drivers", "agencies"
+  add_foreign_key "plan_features", "features"
+  add_foreign_key "plan_features", "plans"
 end

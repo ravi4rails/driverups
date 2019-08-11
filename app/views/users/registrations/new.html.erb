@@ -29,9 +29,8 @@
               </div>
 
               <div class="actions mt-2">
-                <%= f.submit "Sign up", class: "btn btn-default btn-sm bg-white text-dark" %>
+                <%= f.submit "Sign up", class: "btn btn-default btn-sm bg-white text-dark rounded-0" %>
                 <%= link_to 'Already have an account?', new_user_session_path, class: "text-white font-12 ml-3" %>  
-            </li>
               </div>
               <div class="other-links mt-4">
                 <span class="font-12">Or login with</span>
@@ -42,9 +41,9 @@
                  <span class="text-white ml-3">Google</span>
                 <% end %>
               </div>
+            <% end %>
           </div>
         </div>    
-        <% end %>
       </div>
     </div>
   </div>

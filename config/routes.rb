@@ -26,9 +26,13 @@ Rails.application.routes.draw do
     resources :drivers
     resources :agencies
     resources :users
+    resources :plans
+    resources :features
     get 'dashboard'  => 'sites#dashboard'
   end  
   get '/search_drivers' => 'home#search_drivers'
   get '/about' => 'static_pages#about'
   get '/services' => 'static_pages#services'
+  get '/pricing' => 'static_pages#pricing'
+  get '/register_plan' => 'static_pages#register_plan'
 end

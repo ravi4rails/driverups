@@ -1,0 +1,37 @@
+<%= form_for [:admin, plan], html: { id: "plan_form"}  do |form| %>
+  <%= render "partials/errors", object: plan %>
+  <div class="form-group">
+    <%= form.label 'Name' %>
+    <%= form.text_field :name, class: 'form-control rounded-0' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label 'Price' %>
+    <%= form.number_field :price, class: 'form-control rounded-0', min: 10 %>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-12">
+      <p>Choose features for this plan</p>
+    </div>
+    <% Feature.all.each do |feature| %>
+      <div class="col-12 col-md-6">
+        <% if (form.object.present?) && (form.object.features.ids.include? feature.id) %>
+          <div class="custom-control custom-checkbox custom-control-primary mb-1">
+            <%= form.check_box(:plan_feature_remove, {multiple: true, class: "custom-control-input", checked: true}, feature.id, nil) %>
+            <label for="plan_plan_feature_remove_<%= feature.id %>" class="custom-control-label"><%= feature.title %></label>
+          </div>
+        <% else %>
+          <div class="custom-control custom-checkbox custom-control-primary mb-1">
+            <%= form.check_box(:features, {multiple: true, class: "custom-control-input"}, feature.id, nil) %>
+            <label for="plan_features_<%= feature.id %>" class="custom-control-label"><%= feature.title %></label>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

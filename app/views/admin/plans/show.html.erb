@@ -1,0 +1,17 @@
+<section class="pricing py-5">
+  <div class="container">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title text-muted text-uppercase text-center"><%= @plan.name %></h5>
+        <h6 class="card-price text-center">$<%= @plan.price %></h6>
+        <hr>
+        <ul class="fa-ul">
+          <% @plan.features.each do |feature| %>
+            <li><span class="fa-li"><i class="fa fa-check"></i></span><%= feature.title %></li>
+          <% end %>  
+        </ul>
+        <%= link_to "View All plans", admin_plans_path, class: "btn btn-primary btn-block" %></a>
+      </div>
+    </div>
+  </div>
+</section>

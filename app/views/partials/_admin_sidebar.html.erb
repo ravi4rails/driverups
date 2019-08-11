@@ -14,9 +14,19 @@
   <%= link_to admin_drivers_path, class: "list-group-item list-group-item-action" do%>
     <i class="fa fa-drivers-license mr-2"></i><span>Driver</span>
   <% end %>
+  
+  <%= link_to admin_features_path, class: "list-group-item list-group-item-action"  do %>
+      <i class="fa fa-calendar"></i>
+      <span>Feature</span>
+  <% end %>
+  <%= link_to admin_plans_path, class: "list-group-item list-group-item-action"  do %>
+    <i class="fa fa-calendar"></i>
+    <span>Plan</span>
+  <% end %>
+
   <% if user_signed_in? %>
    <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-danger rounded-0" do%>     
     <i class="fa fa-sign-out-alt mr-2"></i><span>Log out</span>
-    <% end %>
+   <% end %>
   <% end %>
 </div>
