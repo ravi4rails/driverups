@@ -33,7 +33,97 @@
             </tbody>
           </table>
         </div>
+        <p>It's glad to know that you are willing to subscribe our plan. Please provide your payment info into below form.</p>
+        <div class="card rounded-0 mt-3">
+          <div class="card-body">
+            <%= form_for :payment, url: :payments, method: :post, html: { id: 'new_order_form' } do |f| %>
+              <%= f.hidden_field :plan_id, value: @plan.id %>
+              <%= f.hidden_field :stripe_card_token %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <div class="form-group">
+                <div class="controls">
+                  <%= text_field_tag :card_number, nil, class: "form-control", "data-stripe" => "number" %>
+                </div>
+              </div>
+              <%= label_tag "Card Holder Name", nil, required: true %>
+              <div class="form-group">
+                <div class="controls">
+                  <%= text_field_tag :card_holder, nil, class: "form-control", "data-stripe" => "holder" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <%= label_tag "Card Verification", nil, required: true %>
+                  <div class="control-group">
+                    <div class="controls">
+                      <%= password_field_tag :card_verification, nil, class: "form-control", "data-stripe" => "cvv" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-12">
+                      <%= label_tag "Card Expires", nil, required: true %>
+                    </div>
+                    <div class="col-md-6">
+                      <%= select_tag :exp_month, options_for_select(Date::MONTHNAMES.compact.each_with_index.map { |name,i| ["#{name}", i+1] }), include_blank: false, "data-stripe" => "exp-month", class: "form-control" %>
+                    </div>
+                    <div class="col-md-6">
+                      <%= select_tag :exp_year, options_for_select((Date.today.year+1..(Date.today.year+10)).to_a), include_blank: false, "data-stripe" => "exp-year", class: "form-control" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.submit "Confirm Subscription", class: 'btn btn-success btn-block' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<%= javascript_include_tag "https://js.stripe.com/v2/" %>
+<script>    
+  Stripe.setPublishableKey('<%= "#{Rails.application.credentials[:stripe][:stripe_publishable_key]}" %>');
+</script>
+<script type="text/javascript">
+  jQuery(function ($) {
+  var show_error, stripeResponseHandler;
+  $("#new_order_form").submit(function (event) {
+    var $form;
+    $form = $(this);
+    $form.find("input[type=submit]").prop("disabled", true);
+    Stripe.card.createToken($form, stripeResponseHandler);
+    return false;
+  });
+
+  stripeResponseHandler = function (status, response) {
+    var $form, token;
+    $form = $("#new_order_form");
+    if (response.error) {
+      show_error(response.error.message);
+      $form.find("input[type=submit]").prop("disabled", false);
+    } else {
+      token = response.id;
+      console.log(token);
+      $form.append($("<input type=\"hidden\" name=\"card_token\" />").val(token));
+      $("[data-stripe=number]").remove();
+      $("[data-stripe=cvv]").remove();
+      $("[data-stripe=exp-year]").remove();
+      $("[data-stripe=exp-month]").remove();
+      $form.get(0).submit();
+    }
+    return false;
+  };
+
+  show_error = function (message) {
+    $("#flash-messages").html('<div class="alert alert-warning"><a class="close" data-dismiss="alert">×</a><div id="flash_alert">' + message + '</div></div>');
+    $('.alert').delay(5000).fadeOut(3000);
+    return false;
+  };
+});
+</script>

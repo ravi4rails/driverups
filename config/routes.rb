@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   get '/services' => 'static_pages#services'
   get '/pricing' => 'static_pages#pricing'
   get '/register_plan' => 'static_pages#register_plan'
+  resources :payments, only: [:create]
+
 end

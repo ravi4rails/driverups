@@ -4,7 +4,7 @@
       <h1>New Driver</h1>      
     </div>
     <div class="card-body">      
-      <% if current_user.agency.drivers.count >= 3 %>
+      <% if current_user.agency.drivers.count >= 3 && !current_user.agency.subscribed?  %>
         <p>Subscribe to create more drivers</p>
            <%= link_to "View Our Pricing Plans", pricing_path, class: "btn btn-primary" %>
       <% else %>
