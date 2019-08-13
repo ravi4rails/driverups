@@ -18,6 +18,8 @@
 //= require agency_form_validation
 //= require driver_form_validation
 //= require contact_validation
+//= require plan_form_validation
+//= require feature_form_validation
 //= require autofill_map
 //= require activestorage
 

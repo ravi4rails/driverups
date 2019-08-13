@@ -1,32 +1,68 @@
-<div class="card rounded-0 user-card">
-  <div class="card-body text-center">
-    <%= image_tag "bstudent.jpg", class: "rounded-circle", style: "width:100px" %>
+<!-- Side Navbar -->
+<nav class="side-navbar">
+  <div class="side-navbar-wrapper">
+    <!-- Sidebar Header    -->
+    <div class="sidenav-header d-flex align-items-center justify-content-center">
+      <!-- User Info-->
+      <div class="sidenav-header-inner text-center">
+        <%= image_tag "bstudent.jpg", class: "rounded-circle", style: "width:100px" %>
+        <h2 class="h5">Nathan Andrews</h2><span>Web Developer</span>
+      </div>
+      <!-- Small Brand information, appears on minimized sidebar-->
+      <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+    </div>
+    <!-- Sidebar Navigation Menus-->
+    <div class="main-menu">
+      <h5 class="sidenav-heading">Main</h5>
+      <ul id="side-main-menu" class="side-menu list-unstyled">                  
+        <li>
+          <%= link_to admin_dashboard_path do %>
+            <i class="fa fa-tachometer mr-2" ></i><span>Dashboard</span>
+          <% end %>
+         </li>
+        <li>
+          <%= link_to admin_users_path do %>
+            <i class="fa fa-user mr-2" ></i><span>User</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_agencies_path do %>
+           <i class="fa fa-building mr-2"></i><span>Agency</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_drivers_path do%>
+           <i class="fa fa-drivers-license mr-2"></i><span>Driver</span>
+          <% end %>
+        </li>
+        <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>subscription plan </a>
+          <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+            <li>
+              <%= link_to admin_features_path do %>
+               <i class="fa fa-calendar"></i><span>Feature</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_plans_path do %>
+                <i class="fa fa-calendar"></i><span>Plan</span>
+              <% end %>
+          </ul>
+        </li>
+        <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page</a></li>
+        <li> <a href="#"> <i class="icon-mail"></i>Demo
+            <div class="badge badge-warning">6 New</div></a></li>
+      </ul>
+    </div>
+    <div class="admin-menu">
+      <h5 class="sidenav-heading">Second menu</h5>
+      <ul id="side-admin-menu" class="side-menu list-unstyled"> 
+        <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
+        <li> <a href="#"> <i class="icon-flask"> </i>Demo
+            <div class="badge badge-info">Special</div></a></li>
+        <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
+        <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
+      </ul>
+    </div>
   </div>
-  <%= link_to admin_dashboard_path, class: "list-group-item list-group-item-action" do %>
-    <i class="fa fa-tachometer mr-2" ></i><span>Dashboard</span>
-  <% end %>
-  <%= link_to admin_users_path, class: "list-group-item list-group-item-action" do %>
-    <i class="fa fa-user mr-2" ></i><span>User</span>
-  <% end %>
-  <%= link_to admin_agencies_path, class: "list-group-item list-group-item-action" do %>
-    <i class="fa fa-building mr-2"></i><span>Agency</span>
-  <% end %>
-  <%= link_to admin_drivers_path, class: "list-group-item list-group-item-action" do%>
-    <i class="fa fa-drivers-license mr-2"></i><span>Driver</span>
-  <% end %>
-  
-  <%= link_to admin_features_path, class: "list-group-item list-group-item-action"  do %>
-      <i class="fa fa-calendar"></i>
-      <span>Feature</span>
-  <% end %>
-  <%= link_to admin_plans_path, class: "list-group-item list-group-item-action"  do %>
-    <i class="fa fa-calendar"></i>
-    <span>Plan</span>
-  <% end %>
+</nav>
 
-  <% if user_signed_in? %>
-   <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-danger rounded-0" do%>     
-    <i class="fa fa-sign-out-alt mr-2"></i><span>Log out</span>
-   <% end %>
-  <% end %>
-</div>

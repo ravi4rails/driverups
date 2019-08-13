@@ -9,7 +9,7 @@
           <tr>
             <th>Name</th>
             <th>Price</th>
-            <th>Action</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -18,9 +18,9 @@
               <td><%= plan.name %></td>
               <td><%= plan.price %></td>
               <td>
-                <%= link_to 'Show',admin_plan_path(plan), class: "btn btn-primary btn-sm" %>
-                <%= link_to 'Edit',edit_admin_plan_path(plan), class: "btn btn-warning btn-sm" %>
-                <%= link_to 'Destroy',admin_plan_path(plan), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+                <%= link_to 'Show',admin_plan_path(plan), class: "btn btn-primary rounded-0 btn-sm" %>
+                <%= link_to 'Edit',edit_admin_plan_path(plan), class: "btn btn-warning rounded-0 btn-sm" %>
+                <%= link_to 'Destroy',admin_plan_path(plan), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger rounded-0 btn-sm" %>
               </td>
             </tr>
           <% end %>  

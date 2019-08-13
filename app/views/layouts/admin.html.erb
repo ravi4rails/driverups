@@ -10,20 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="shortcut icon" href="https://d19m59y37dris4.cloudfront.net/dashboard/1-4-5/img/favicon.ico">
   </head>
 
   <body>
-    <%= render 'partials/admin_header'%>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-3">
-          <%= render 'partials/admin_sidebar' %>
-        </div>
-        <div class="col-md-9">
-          <%= yield %>
-        </div>  
-      </div>  
-    </div>
-    <%= render 'partials/admin_footer' %>  
+    <%= render 'partials/admin_sidebar' %>
+    <div class="page">
+      <%= render 'partials/admin_header'%>
+        <%= yield %>
+      <%#= render 'partials/admin_footer' %>
+    </div>  
   </body>
 </html>
