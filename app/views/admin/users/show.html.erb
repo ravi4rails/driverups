@@ -1,5 +1,13 @@
+<div class="breadcrumb-holder">
+  <div class="container-fluid">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to 'Users', admin_users_path %></li>
+      <li class="breadcrumb-item active"><%= @user.email %></li>
+    </ul>
+  </div>
+</div>
 <div class="contanier">
-  <div class="card">
+  <div class="card mt-3 ml-3">
     <div class="card-body"> 
       <p>
         <strong> Name:</strong>

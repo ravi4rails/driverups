@@ -59,7 +59,7 @@ module Admin
       end
 
       def driver_params
-        params.require(:driver).permit(:first_name, :last_name, :contact_1, :contact_2, :city, :state, :country, :address, :id_proof, :additional_id, :profile_image, :zipcode, :latitude, :longitude)
+        params.require(:driver).permit!
       end
   end
 end

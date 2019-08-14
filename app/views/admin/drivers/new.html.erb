@@ -1,20 +1,23 @@
 <div class="breadcrumb-holder">
   <div class="container-fluid">
     <ul class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html"></a>Admin</li>
-      <li class="breadcrumb-item active">Driver</li>
+      <li class="breadcrumb-item"><%= link_to 'Admin', admin_dashboard_path %></li>
+      <li class="breadcrumb-item active">Drivers</li>
     </ul>
   </div>
 </div>
-<div class="container">
-  <div class="card mt-3">
-    <div class="card-header">
-      <h1>New Driver</h1>      
+
+<div class="form mt-5">
+  <div class="container-fluid">
+    <div class="card mt-3">
+      <div class="card-header">
+        <h1>New Driver</h1>      
+      </div>
+      <div class="card-body">
+        <%= render 'form', driver: @driver %>      
+      </div>
     </div>
-    <div class="card-body">
-      <%= render 'form', driver: @driver %>      
-    </div>
-  </div>
+  </div>  
 </div>
 
 

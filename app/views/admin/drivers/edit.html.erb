@@ -1,12 +1,23 @@
-<div class="contanier">
-  <div class="card"> 
-    <div class="card-header">
-      <h1>Editing Driver</h1>      
-    </div>
-    <div class="card-body">
+<div class="breadcrumb-holder">
+  <div class="container-fluid">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to 'Drivers', admin_drivers_path %></li>
+      <li class="breadcrumb-item active"><%= @driver.first_name %></li>
+    </ul>
+  </div>
+</div>
+<div class="form mt-5">
+  <div class="contanier-fluid">
+    <div class="card"> 
+      <div class="card-header">
+        <h1>Editing Driver</h1>      
+      </div>
+      <div class="card-body">
 
-      <%= render 'form', driver: @driver %>
+        <%= render 'form', driver: @driver %>
 
-      <%= link_to 'Show', admin_driver_path(@driver), class: "btn btn-success mt-2 btn-sm" %>
+        <%= link_to 'Show', admin_driver_path(@driver), class: "btn btn-success mt-2 btn-sm" %>
+      </div>
     </div>
   </div>
+</div>

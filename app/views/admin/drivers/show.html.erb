@@ -1,4 +1,12 @@
-<div class="contanier">
+<div class="breadcrumb-holder">
+  <div class="container-fluid">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to 'Driver', admin_drivers_path %></li>
+      <li class="breadcrumb-item active"><%= @driver.first_name %></li>
+    </ul>
+  </div>
+</div>
+<div class="contanier-fluid">
   <div class="card">
     <div class="card-body">            
       <p>
