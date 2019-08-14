@@ -1,4 +1,10 @@
 <div class="container">
+  <% if notice.present? %>
+    <div class="alert alert-success mt-5 alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= notice %>
+    </div>
+  <% end %>
   <div class="card mt-4">
     <div class="card-body">
       <div>
@@ -28,7 +34,7 @@
       <%= link_to "Reset", @agency, class: "btn btn-primary mt-2" %>
     <% end %>      
   </div>
-  <div class="row">
+  <div class="row"> 
     <div class="col-md-12 mb-5">
       <div class="row">
         <%= render @drivers %>        

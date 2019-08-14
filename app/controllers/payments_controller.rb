@@ -18,7 +18,7 @@ class PaymentsController < ApplicationController
     @charge = @stripe.create_charge(total_amount, 'usd', @plan.name, @customer.id)
     puts @charge
 
-    redirect_to root_path, flash: { success: "Order placed successfully" }
+    redirect_to root_path,  notice: "Order placed successfully"
   end
 
 end
