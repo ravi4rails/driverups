@@ -1,5 +1,13 @@
+<div class="breadcrumb-holder">
+  <div class="container-fluid">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Agencies</a></li>
+      <li class="breadcrumb-item active"><%= @agency.name %></li>
+    </ul>
+  </div>
+</div>
 <div class="contanier">
-  <div class="card">
+  <div class="card mt-3 ml-5">
     <div class="card-body"> 
       <p>
         <strong>Name:</strong>
@@ -7,13 +15,13 @@
       </p>
 
       <p>
-        <strong>Cover image:</strong>
-        <%= image_tag @agency.cover_image_url, class: "rounded-circle",  style: "width:150px;height:100px;" %>
+        <strong>Cover image:</strong><br>
+        <%= image_tag @agency.cover_image_url, class: "mt-2",  style: "width:150px;height:100px;" %>
       </p>
 
       <p>
-        <strong>Logo:</strong>
-        <%= image_tag @agency.logo_url, class: "rounded-circle", style: "width:150px;height:100px;" %>
+        <strong>Logo:</strong><br>
+        <%= image_tag @agency.logo_url, class: "mt-2", style: "width:150px;height:100px;" %>
       </p>
 
       <%= link_to 'Edit', edit_admin_agency_path(@agency), class: "btn btn-secondary btn-sm" %> |

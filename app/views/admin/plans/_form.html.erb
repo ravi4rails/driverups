@@ -1,5 +1,7 @@
 <%= form_for [:admin, plan], html: { id: "plan_form"}  do |form| %>
   <%= render "partials/errors", object: plan %>
+   
+
   <div class="form-group">
     <%= form.label 'Name' %>
     <%= form.text_field :name, class: 'form-control rounded-0' %>

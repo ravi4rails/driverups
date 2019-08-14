@@ -1,3 +1,11 @@
+<div class="breadcrumb-holder">
+  <div class="container-fluid">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Feature</a></li>
+      <li class="breadcrumb-item active">Forms</li>
+    </ul>
+  </div>
+</div>  
 <%= form_for [:admin, @feature], html: { id: "feature_form"}  do |form| %>
   <%= render "partials/errors", object: @feature %>
   <div class="form-group">

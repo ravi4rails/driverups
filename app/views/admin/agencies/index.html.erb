@@ -16,7 +16,7 @@
             <th>Name</th>
             <th>Cover image</th>
             <th>Logo</th>
-            <th colspan="3">Actions</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -26,9 +26,16 @@
               <td><%= agency.name %></td>
               <td><%= agency.cover_image %></td>
               <td><%= agency.logo %></td>
-              <td><%= link_to 'Show', admin_agency_path(agency), class: "btn btn-success rounded-0 btn-sm" %></td>
-              <td><%= link_to 'Edit', edit_admin_agency_path(agency), class: "btn btn-warning rounded-0 btn-sm" %></td>
-              <td><%= link_to 'Destroy',admin_agency_path(agency), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger rounded-0 btn-sm" %></td>
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Actions</button>
+                  <div class="dropdown-menu">                                   
+                   <%= link_to 'Show', admin_agency_path(agency), class: "dropdown-item" %>
+                   <%= link_to 'Edit', edit_admin_agency_path(agency), class: "dropdown-item" %>
+                   <%= link_to 'Destroy',admin_agency_path(agency), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
+                  </div>  
+                </div>
+            </td>
             </tr>
           <% end %>
         </tbody>
