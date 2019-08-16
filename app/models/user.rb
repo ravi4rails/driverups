@@ -5,8 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   
   has_one :agency
+  after_create :assign_default_role
 
-  ROLES = ["admin"] 
+  ROLES = ["admin, guest"] 
+  
+  def assign_default_role
+    self.update(role: "guest")
+  end
 
   def admin?
     self.role == "admin"    
