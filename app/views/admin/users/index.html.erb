@@ -7,6 +7,11 @@
   </div>
 </div>
 <div class="container-fluid">
+  <div class="card mt-3">
+    <div class="card-body">
+      <%= render 'admin/users/index/filter' %>      
+    </div>
+  </div>
   <div class="card mt-3">   
     <% if notice.present? %>
       <div class="alert alert-success mt-5 alert-dismissible">

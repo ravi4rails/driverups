@@ -1,0 +1,10 @@
+<%= search_form_for @q, url: :admin_features, method: :get do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.search_field :title_cont, class: "form-control" %>      
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Search',  class: 'btn btn-primary' %>
+    <%= link_to 'Reset', admin_features_path, class: 'btn btn-secondary' %>
+  </div>  
+<% end %>

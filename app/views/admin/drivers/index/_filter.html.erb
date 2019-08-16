@@ -1,0 +1,51 @@
+<%= search_form_for @q, url: :admin_drivers, method: :get do |f| %>
+  <div class="row">
+    <div class="form-group col-md-3">
+      <%= f.label :first_name %>
+      <%= f.search_field :first_name_cont, class: "form-control" %>      
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :last_name  %>
+      <%= f.search_field :last_name_cont, class: "form-control" %>      
+    </div>
+    <div class="form-group col-md-3">
+      <%= f.label :contact_1 %>
+      <%= f.search_field :contact_1_cont, class: "form-control" %>      
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :contact_2 %>
+      <%= f.search_field :contact_2_cont, class: "form-control" %>      
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.search_field :address_cont, class: "form-control" %>
+  </div>
+
+  <div class="row">  
+    <div class="form-group col-md-3">
+      <%= f.label :city %>
+      <%= f.search_field :city_cont, class: "form-control" %>      
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :state %>
+      <%= f.search_field :state_cont, class: "form-control" %>      
+    </div>
+    <div class="form-group col-md-3">
+      <%= f.label :country %>
+      <%= f.search_field :country_cont, class: "form-control" %>      
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :zipcode %>
+      <%= f.search_field :zipcode_cont, class: "form-control" %>      
+    </div>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Search',  class: 'btn btn-primary' %>
+    <%= link_to 'Reset', admin_drivers_path, class: 'btn btn-secondary' %>
+  </div> 
+<% end %>

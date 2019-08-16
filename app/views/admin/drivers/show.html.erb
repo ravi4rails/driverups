@@ -10,8 +10,8 @@
   <div class="card">
     <div class="card-body">            
       <p>
-        <strong>Profile image:</strong>
-        <%= image_tag @driver.profile_image_url, class: "rounded-circle", style: "width:175px;height:175px;" %>
+        <strong>Profile image:</strong><br>
+        <%= image_tag @driver.profile_image_url, style: "width:175px;height:175px;" %>
       </p>
 
       <p>
@@ -63,7 +63,6 @@
         <strong>Additional:</strong>
         <%= @driver.additional_id %>
       </p>
-
       
       <%= link_to 'Edit', edit_admin_driver_path(@driver),class: "btn btn-secondary btn-sm" %> |
       <%= link_to 'Back', admin_drivers_path, class: "btn btn-primary btn-sm" %>

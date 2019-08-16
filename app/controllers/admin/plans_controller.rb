@@ -3,8 +3,10 @@ module Admin
   layout 'admin'
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
   def index
-    @plans = Plan.all
+    @q = Plan.ransack(params[:q])
+    @plans = @q.result(distinct: true)
   end
 
   def show;end

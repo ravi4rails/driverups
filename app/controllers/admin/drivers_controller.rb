@@ -6,6 +6,8 @@ module Admin
     
     def index
       @drivers = Driver.all
+      @q = Driver.ransack(params[:q])
+      @drivers = @q.result(distinct: true)
     end
 
     def show

@@ -6,6 +6,8 @@ module Admin
 
     def index
       @agencies = Agency.all
+      @q = Agency.ransack(params[:q])
+      @agencies = @q.result(distinct: true)
     end
 
     def show

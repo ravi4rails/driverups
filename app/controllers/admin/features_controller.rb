@@ -5,6 +5,8 @@ module Admin
     before_action :authenticate_user!
     def index
       @features = Feature.all
+      @q = Feature.ransack(params[:q])
+      @features = @q.result(distinct: true)
     end
 
     def show;end
