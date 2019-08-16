@@ -7,51 +7,53 @@
   </div>
 </div>
 <div class="container-fluid">
-  <% if notice.present? %>
-    <div class="alert alert-success mt-5 alert-dismissible">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= notice %>
-    </div>
-  <% end %>
-  <div class="row">
-    <div class="col-md-12">
+  <div class="card mt-3">   
+    <% if notice.present? %>
+      <div class="alert alert-success mt-5 alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= notice %>
+      </div>
+    <% end %>
+    <div class="card-header">
       <h1>Users</h1>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Contact number</th>
-            <th>Role</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @users.each do |user| %>
+    </div>  
+    <div class="card-body">    
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
             <tr>
-              <td><%= user.first_name %></td>
-              <td><%= user.email %></td>
-              <td><%= user.contact_number %></td>
-              <td><%= user.role %></td>
-              <td>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Actions</button>
-                  <div class="dropdown-menu">                                   
-                   <%= link_to 'Show', admin_user_path(user), class: "dropdown-item" %>
-                   <%= link_to 'Edit', edit_admin_user_path(user), class: "dropdown-item" %>
-                   <%= link_to 'Destroy',admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
-                  </div>  
-                </div> 
-              </td>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Contact number</th>
+              <th>Role</th>
+              <th>Actions</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
 
-      <br>
-
-      <%= link_to 'New user', new_admin_user_path, class: "btn btn-primary rounded-0 btn-sm" %>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.first_name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.contact_number %></td>
+                <td><%= user.role %></td>
+                <td>
+                  <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Actions</button>
+                    <div class="dropdown-menu">                                   
+                     <%= link_to 'Show', admin_user_path(user), class: "dropdown-item" %>
+                     <%= link_to 'Edit', edit_admin_user_path(user), class: "dropdown-item" %>
+                     <%= link_to 'Destroy',admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
+                    </div>  
+                  </div> 
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br>
+        <%= link_to 'New user', new_admin_user_path, class: "btn btn-primary rounded-0 btn-sm" %>
+      </div>
     </div>
-  </div>
+  </div> 
 </div>
