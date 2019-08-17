@@ -1,61 +1,43 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row no-gutters mt-3">
     <div class="col-md-6">      
-      <div class="card mr-3">
-        <div class="card-body">    
-          <p>
-            <%= image_tag @driver.profile_image_url, class: "rounded-circle", style: "width:175px;height:175px;" %>
-          </p>
+      <div class="card mr-3 mb-3">
+        <div class="card-body"> 
+        <div class="row">
+          <div class="col-md-3"> 
+            <p>
+              <%= image_tag @driver.profile_image_url, class: "rounded-circle", style: "width:120px;height:120px;" %>
+            </p>            
+          </div>
+          <div class="col-md-8 ml-4"> 
+            <h4 class="name-tag"><%= @driver.full_name %></h4>
 
-          <p>
-            <strong>First name:</strong>
-            <%= @driver.first_name %>
-          </p>
-
-          <p>
-            <strong>Last name:</strong>
-            <%= @driver.last_name %>
-          </p>
-
-          <p>
             <strong>Contact 1:</strong>
-            <%= @driver.contact_1 %>
-          </p>
+            <p class="u-language"><%= @driver.contact_1 %></p>
 
-          <p>
             <strong>Contact 2:</strong>
-            <%= @driver.contact_2 %>
-          </p>
+            <p class="u-language"><%= @driver.contact_2 %></p>
 
-          <p>
             <strong>City:</strong>
-            <%= @driver.city %>
-          </p>
+            <p class="u-language"><%= @driver.city %></p>
 
-          <p>
             <strong>State:</strong>
-            <%= @driver.state %>
-          </p>
+            <p class="u-language"><%= @driver.state %></p>
 
-          <p>
             <strong>Country:</strong>
-            <%= @driver.country %>
-          </p>
+            <p class="u-language"><%= @driver.country %></p>
 
-          <p>
             <strong>Address:</strong>
-            <%= @driver.address %>
-          </p>
+            <p class="u-language"><%= @driver.address %></p>
 
-          <p>
-            <strong>Id proof:</strong>
-            <%= @driver.id_proof %>
-          </p>
+            <strong>Driving license:</strong>
+            <p class="u-language"><%= @driver.id_proof %></p>
 
-          <p>
             <strong>Additional:</strong>
-            <%= @driver.additional_id %>
-          </p>
+            <p class="u-language"><%= @driver.additional_id %></p>            
+          </div>
+        </div>   
+
         </div>
       </div>
     </div>
@@ -68,7 +50,7 @@
 </div>
 
 <script 
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDZdExYkM__EAvEN633_8iHm-BWm9q7wY">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFBYM37YGMTdgkEp9fipPljSjprTDZL8Y">
 </script>
 
 <script>
@@ -100,8 +82,8 @@
 
 <style type="text/css">
   #map {
-    width: 100%;
-    height: 675px;
+    width: 80%;
+    height: 575px;
 }
 
 </style>

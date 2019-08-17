@@ -1,18 +1,20 @@
 <div class="jumbotron jumbotron-mb-0">
-  <div class="container">
-    <% if notice.present? %>
-      <div class="alert alert-success mt-5 alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= notice %>
+  <div class="background">
+    <div class="container">
+      <% if notice.present? %>
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= notice %>
+        </div>
+      <% end %> 
+      <div class="text-center pl-5 pr-5">
+        <h1 class="display-6 mb-3">Find Your Driver at DriverUps</h1>
+        <p class="lead font-16">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
       </div>
-    <% end %> 
-    <div class="text-center pl-5 pr-5">
-      <h1 class="display-6 mb-3">Find Your Driver at DriverUps</h1>
-      <p class="lead font-16">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-    </div>
-    <div class="row">
-      <div class="col-md-7 mx-md-auto">
-        <%= render 'partials/search_driver', q: @q %> 
+      <div class="row">
+        <div class="col-md-7 mx-md-auto">
+          <%= render 'partials/search_driver', q: @q %> 
+        </div>
       </div>
     </div>
   </div>
