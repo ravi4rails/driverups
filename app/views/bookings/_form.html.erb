@@ -1,0 +1,49 @@
+<%= form_with(model: booking, local: true, html: {id: 'booking_form'}) do |form| %>
+
+  <%= form.hidden_field :source_latitude, id: :source_latitude %>
+  <%= form.hidden_field :source_longitude, id: :source_longitude %>
+  <%= form.hidden_field :destination_latitude, id: :destination_latitude %>
+  <%= form.hidden_field :destination_longitude, id: :destination_longitude %>
+  <%= form.hidden_field :distance, id: :distance %>  
+  <div class="form-group">
+    <%= form.label :start %>
+    <%= form.text_field :starting_point, class: "form-control", placeholder: "start", required: true, id: "autocomplete", onFocus: "geolocate()" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end %>
+    <%= form.text_field :end_point, class: "form-control", placeholder: "end", required: true, id: "autocomplete_2nd",onFocus: "geolocate_2nd()" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-info btn-sm"%>
+  </div>
+<% end %>
+     <button id="btn2">Calculate Distance</button>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFBYM37YGMTdgkEp9fipPljSjprTDZL8Y&libraries&libraries=places&callback=initAutocomplete"
+    async defer></script>
+
+
+
+<script>
+$(document).ready(function() {
+  $("#btn2").click(function(){
+    var source_latitude = parseInt(document.getElementById("source_latitude").value);
+    var destination_latitude = parseInt(document.getElementById("destination_latitude").value);
+    var source_longitude = parseInt(document.getElementById("source_longitude").value);
+    var destination_longitude = parseInt(document.getElementById("destination_longitude").value);
+
+    var r = 6371; // Radius of the earth in km
+    var dlat = destination_latitude - source_latitude
+    var dlon = destination_longitude - source_longitude
+
+    var distance = (Math.sin(dlat / 2))**2 + Math.cos(source_latitude) *
+            (Math.sin(dlon / 2))**2 * Math.cos(destination_latitude)
+    c = 2 * Math.atan2( Math.sqrt(distance), Math.sqrt(1-distance))
+    var d = r * c; // Distance in km
+    console.log(c);
+  }); 
+});
+    
+</script>
+

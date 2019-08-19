@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   devise_for :users, controllers: {
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
     resources :drivers
   end
   resources :contacts, only: [:new, :create]
+  resources :bookings
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"
 

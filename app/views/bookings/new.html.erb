@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="card mt-4">
+    <div class="card-header">
+      <h1>New booking</h1>      
+    </div>
+    <div class="card-body">
+      <%= render 'form', booking: @booking %>
+      <%= link_to 'Back', bookings_path, class: "btn btn-secondary mt-2" %>      
+    </div>
+  </div>
+</div>

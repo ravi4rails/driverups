@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   
   has_one :agency
-  has_one :booking
+  has_many :bookings
   after_create :assign_default_role
 
   ROLES = ["admin, guest"] 

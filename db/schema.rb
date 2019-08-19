@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_134422) do
+ActiveRecord::Schema.define(version: 2019_08_17_082820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,13 @@ ActiveRecord::Schema.define(version: 2019_08_16_134422) do
     t.datetime "updated_at", null: false
     t.float "distance"
     t.bigint "driver_id"
+    t.bigint "user_id"
+    t.float "source_latitude"
+    t.float "source_longitude"
+    t.float "destination_latitude"
+    t.float "destination_longitude"
     t.index ["driver_id"], name: "index_bookings_on_driver_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -126,6 +132,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_134422) do
 
   add_foreign_key "agencies", "users"
   add_foreign_key "bookings", "drivers"
+  add_foreign_key "bookings", "users"
   add_foreign_key "drivers", "agencies"
   add_foreign_key "plan_features", "features"
   add_foreign_key "plan_features", "plans"

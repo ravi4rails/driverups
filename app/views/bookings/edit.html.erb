@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="card mt-4 mb-5">
+    <div class="card-header">
+      <h1>Editing Booking</h1>      
+    </div>
+    <div class="card-body">
+     <%= render 'form', booking: @booking %>
+     <%= link_to 'Show', @booking, class: "btn btn-success mt-2 btn-sm" %> 
+     <%= link_to 'Back', bookings_path, class: "btn btn-secondary mt-2 btn-sm" %>      
+    </div>
+  </div>
+</div>

@@ -21,5 +21,6 @@
 //= require plan_form_validation
 //= require feature_form_validation
 //= require autofill_map
+//= require autofill_map_booking
 //= require activestorage
 
