@@ -11,8 +11,9 @@
                   <h5 class="font-weight-bold mt-3"><%= driver.full_name %></h5>
                   <h6 data-toggle="tooltip" data-placement="top" title="<%= driver.address.capitalize %>"><%= truncate(driver.address.capitalize, length: 20) %></h6>
                   <h5 class="text-dark"><%= driver.country %></h5>      
-                  <%= link_to agency_driver_path(driver.agency, driver), class: "btn btn-primary" do %>
+                  <%= link_to agency_driver_path(driver.agency, driver), class: "btn btn-primary btn-sm" do %>
                     <i class="fa fa-eye"></i> <span>Show</span>
+                  <%= link_to 'Book driver', new_booking_path(@booking), class: "btn btn-info btn-sm ml-2" %>
                   <% end %>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-<%= form_with(model: booking, local: true, html: {id: 'booking_form'}) do |form| %>
+<%= form_for @booking, html: {id: 'booking_form', onsubmit: "bytutorialMap.getGeolocationData()", remote: true} do |form| %>
 
   <%= form.hidden_field :source_latitude, id: :source_latitude %>
   <%= form.hidden_field :source_longitude, id: :source_longitude %>
@@ -16,16 +16,134 @@
   </div>
 
   <div class="actions">
-    <%= form.submit class: "btn btn-info btn-sm"%>
+    <%= form.submit class: "btn btn-info btn-sm" %>
   </div>
 <% end %>
-     <button id="btn2">Calculate Distance</button>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFBYM37YGMTdgkEp9fipPljSjprTDZL8Y&libraries&libraries=places&callback=initAutocomplete"
-    async defer></script>
 
-
-
+<!-- <input type="button" id="btnQuery" value="Get Directions" onclick="bytutorialMap.getGeolocationData()"/>  -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFBYM37YGMTdgkEp9fipPljSjprTDZL8Y&libraries&libraries=places&callback=initAutocomplete"
+    async defer></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFBYM37YGMTdgkEp9fipPljSjprTDZL8Y&sensor=false&libraries=places&callback=initAutocomplete" type="text/javascript"></script>
+<script type="text/javascript" src="googlemap.js"></script>
+<table class="tbl-map">
+    <tr>
+      <td><div id="map"></div></td>
+      <td><div id="panel-direction"></div></td>
+    </tr>
+  </table>
 <script>
+  //Init the geocoder library
+  var geocoder = new google.maps.Geocoder();
+
+  //array to hold the geo address
+  var geoAddress = [];
+
+  //function framework
+  bytutorialMap = {
+    initNavigateMap: function (mapID, panelDirectionID, source_latitude, source_longitude, destination_latitude, destination_longitude) {
+      var directionsDisplay = new google.maps.DirectionsRenderer;
+      var directionsService = new google.maps.DirectionsService;
+      
+      //initialize the map
+      var map = new google.maps.Map(document.getElementById(mapID), {
+        zoom: 7,
+        center: {lat: source_latitude, lng: source_longitude}
+      }); 
+      
+      //clear the direction panel
+      $("#" + panelDirectionID).html("");
+      directionsDisplay.setMap(map);
+      directionsDisplay.setPanel(document.getElementById(panelDirectionID));
+
+      //prepare the latitude and longitude data
+      starting_point = source_latitude + ", " + source_longitude;
+      end_point = destination_latitude + ", " + destination_longitude;
+      bytutorialMap.calculateAndDisplayRoute(directionsService, directionsDisplay, starting_point, end_point);
+    },
+
+    //function to get the driving route
+    calculateAndDisplayRoute: function (directionsService, directionsDisplay, starting_point, end_point) {
+      directionsService.route({
+        origin: starting_point,
+        destination: end_point,
+        travelMode: 'DRIVING'
+      }, function(response, status) {
+        if (status === 'OK') {
+          directionsDisplay.setDirections(response);
+          $(document).ready(function(){
+            let distance = document.querySelector(".adp-summary").firstElementChild.innerHTML.split(' ')[0];
+            document.getElementById('distance').value = distance
+          });
+        } else {
+          alert('Directions request failed due to ' + status);
+        }
+      });
+    },
+
+    //get geolocation based on address
+    codeAddress: function (address) {
+      return new Promise(function(resolve, reject){
+        geocoder.geocode({ 'address': address }, function (results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            resolve(results);
+          } else {
+            reject(Error("Geocode for address " + address + " was not successful for the following reason: " + status));
+          }
+        });
+      });
+    },
+    
+    //function to get geolocation of both addresses.
+    getGeolocationData: function(){
+      if($("#autocomplete").val() != "" && $("#autocomplete_2nd").val() != ""){
+        geoAddress = [];
+        bytutorialMap.codeAddress($("#autocomplete").val()).then(function(response){
+          var geoData = {
+            latitude: response[0].geometry.location.lat(),
+            longitude: response[0].geometry.location.lng()
+          }
+          geoAddress.push(geoData);
+        }).then(function(){
+          return bytutorialMap.codeAddress($("#autocomplete_2nd").val()).then(function(response){
+            var geoData2 = {
+              latitude: response[0].geometry.location.lat(),
+              longitude: response[0].geometry.location.lng()
+            }
+            geoAddress.push(geoData2);
+          });
+          
+        }).then(function(){
+          bytutorialMap.initNavigateMap("map", "panel-direction", geoAddress[0].latitude, geoAddress[0].longitude, geoAddress[1].latitude, geoAddress[1].longitude);
+        });
+      }else{
+        alert("Please enter both addresses");
+      }
+    },
+    
+    //clear entries and map display
+    clearEntries: function(){
+      $("#autocomplete, #autocomplete_2nd").val("");
+      $("#map, #panel-direction").html("");
+    }
+  }
+</script>
+
+
+
+<!-- <script type="text/javascript">
+  $(document).ready(function() {
+    $("#btn2").click(function(){
+      var source_latitude = parseFloat(document.getElementById("source_latitude").value);
+      var destination_latitude = parseFloat(document.getElementById("destination_latitude").value);
+      var source_longitude = parseFloat(document.getElementById("source_longitude").value);
+      var destination_longitude = parseFloat(document.getElementById("destination_longitude").value);
+
+      var a = <#%= Geocoder::Calculations.distance_between([`${source_latitude}`,`${source_longitude}`], [`${destination_latitude}`,`${destination_longitude}`]) %>;
+      console.log(a);
+    });
+  });
+</script>    --> 
+<!-- <script>
 $(document).ready(function() {
   $("#btn2").click(function(){
     var source_latitude = parseInt(document.getElementById("source_latitude").value);
@@ -37,13 +155,50 @@ $(document).ready(function() {
     var dlat = destination_latitude - source_latitude
     var dlon = destination_longitude - source_longitude
 
-    var distance = (Math.sin(dlat / 2))**2 + Math.cos(source_latitude) *
-            (Math.sin(dlon / 2))**2 * Math.cos(destination_latitude)
-    c = 2 * Math.atan2( Math.sqrt(distance), Math.sqrt(1-distance))
+    var distance = Math.sin(dlat/2) * Math.sin(dlat/2) +
+                   Math.sin(dlon/2) * Math.sin(dlon/2) * 
+                   Math.cos(source_latitude) * Math.cos(destination_latitude);
+    var c = 2 * Math.atan2( Math.sqrt(distance), Math.sqrt(1-distance));
     var d = r * c; // Distance in km
     console.log(c);
-  }); 
+  });  
 });
     
 </script>
+ -->
+<style>
+    
+  body{
+    font-family:Arial;
+    font-size:14px;
+  }
 
+  table.tbl-entry{
+    padding:5px 10px;
+  }
+
+  .input-entry{
+    padding:5px;
+    border-radius:5px;
+    min-width:300px;
+  }
+
+  table.tbl-map{
+    width:100%;
+  }
+
+  table.tbl-map td{
+    width:50%;
+    vertical-align:top;
+    padding:10px;
+  }
+
+  #map{
+    height:500px;
+  }
+
+  #panel-direction{
+    height:500px;
+    overflow-x:hidden;
+  }
+</style>
