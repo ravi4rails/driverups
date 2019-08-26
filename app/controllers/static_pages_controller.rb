@@ -14,5 +14,9 @@ class StaticPagesController < ApplicationController
   def register_plan
     @plan = Plan.find(params[:plan_id])
   end
-   
+
+  def confirm_booking 
+    @booking = Booking.find(params[:booking_id])
+  end
+
 end

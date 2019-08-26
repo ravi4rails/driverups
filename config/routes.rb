@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :agencies, except: [:index] do
-    resources :drivers
+    resources :drivers 
   end
   resources :contacts, only: [:new, :create]
   resources :bookings
@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get '/services' => 'static_pages#services'
   get '/pricing' => 'static_pages#pricing'
   get '/register_plan' => 'static_pages#register_plan'
+  get '/confirm_booking' => 'static_pages#confirm_booking'
   resources :payments, only: [:create]
 
 end

@@ -5,6 +5,7 @@
   <%= form.hidden_field :destination_latitude, id: :destination_latitude %>
   <%= form.hidden_field :destination_longitude, id: :destination_longitude %>
   <%= form.hidden_field :distance, id: :distance %> 
+  <%= form.hidden_field :amount, id: :amount %> 
   <%= form.hidden_field :user_id, value: current_user.id %> 
   <%= form.hidden_field :driver_id, value: @driver.id %>  
 
@@ -78,8 +79,10 @@
             document.getElementById('distance').value = distance
             $("#booking").css("display", "block");
             document.querySelector(".adp-legal").style.display = "none";
-            var price = distance.replace(/\,/g,'')*base_fare;
-            document.querySelector('.adp-summary').childNodes[2].innerHTML = "Total Fare " + price + " Rs.";
+            var amount = distance.replace(/\,/g,'')*base_fare;
+            document.querySelector('.adp-summary').childNodes[2].innerHTML = "Total Fare " + amount + " Rs.";
+            document.getElementById('amount').value = amount
+            $("#notice").css("display", "block");
           });
         } else {
           alert('Directions request failed due to ' + status);
@@ -137,7 +140,6 @@
   }
   
 </script>
-
 <style>
     
   body{
