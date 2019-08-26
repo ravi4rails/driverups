@@ -24,6 +24,11 @@
         <%= image_tag @agency.logo_url, class: "mt-2", style: "width:150px;height:100px;" %>
       </p>
 
+      <p>
+        <strong>Logo:</strong><br>
+        <%= @agency.base_fare %>
+      </p>
+
       <%= link_to 'Edit', edit_admin_agency_path(@agency), class: "btn btn-secondary btn-sm" %> |
       <%= link_to 'Back', admin_agencies_path, class: "btn btn-primary btn-sm" %>
     </div>

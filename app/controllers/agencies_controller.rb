@@ -55,6 +55,6 @@ class AgenciesController < ApplicationController
     end
 
     def agency_params
-      params.require(:agency).permit(:name, :cover_image, :logo, :user_id)
+      params.require(:agency).permit!
     end
 end

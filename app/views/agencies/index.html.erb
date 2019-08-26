@@ -19,6 +19,7 @@
           <td><%= @agency.name %></td>
           <td><%= @agency.cover_image %></td>
           <td><%= @agency.logo %></td>
+          <td><%= @agency.base_fare %></td>
           <td><%= link_to 'Show', @agency, class: "btn btn-success" %></td>
           <td><%= link_to 'Edit', edit_agency_path(@agency), class: "btn btn-warning" %></td>
           <td><%= link_to 'Destroy', @agency, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>

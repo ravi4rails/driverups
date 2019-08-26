@@ -1,10 +1,13 @@
-<%= form_for @booking, html: {id: 'booking_form', remote: true} do |form| %>
+<%= form_for @booking, html: {id: 'booking_form'} do |form| %>
 
   <%= form.hidden_field :source_latitude, id: :source_latitude %>
   <%= form.hidden_field :source_longitude, id: :source_longitude %>
   <%= form.hidden_field :destination_latitude, id: :destination_latitude %>
   <%= form.hidden_field :destination_longitude, id: :destination_longitude %>
-  <%= form.hidden_field :distance, id: :distance %>  
+  <%= form.hidden_field :distance, id: :distance %> 
+  <%= form.hidden_field :user_id, value: current_user.id %> 
+  <%= form.hidden_field :driver_id, value: @driver.id %>  
+
   <div class="form-group">
     <%= form.label :start %>
     <%= form.text_field :starting_point, class: "form-control", placeholder: "start", required: true, id: "autocomplete", onFocus: "geolocate()" %>
@@ -14,18 +17,16 @@
     <%= form.label :end %>
     <%= form.text_field :end_point, class: "form-control", placeholder: "end", required: true, id: "autocomplete_2nd",onFocus: "geolocate_2nd()" %>
   </div>
-
-  <!-- <div class="actions">
-    <#%= form.submit class: "btn btn-info btn-sm" %>
-  </div> -->
+   
+  <div class="actions">
+    <input type="button" class="btn btn-info btn-sm" id="btnQuery" value="Get Quote" onclick="bytutorialMap.getGeolocationData()"/>
+    <%= form.submit class: "btn btn-info btn-sm float-right", id: "booking", style: "display:none"  %>
+  </div>
 <% end %>
-<input type="button" id="btnQuery" value="Create Booking" onclick="bytutorialMap.getGeolocationData()"/>
-<!-- <input type="button" id="btnQuery" value="Get Directions" onclick="bytutorialMap.getGeolocationData()"/>  -->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFBYM37YGMTdgkEp9fipPljSjprTDZL8Y&libraries&libraries=places&callback=initAutocomplete"
-    async defer></script> -->
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFBYM37YGMTdgkEp9fipPljSjprTDZL8Y&sensor=false&libraries=places&callback=initAutocomplete" type="text/javascript"></script>
 <script type="text/javascript" src="googlemap.js"></script>
-<table class="tbl-map">
+  <table class="tbl-map">
     <tr>
       <td><div id="map"></div></td>
       <td><div id="panel-direction"></div></td>
@@ -72,8 +73,13 @@
           directionsDisplay.setDirections(response);
           $(document).ready(function(){
             let distance = document.querySelector(".adp-summary").firstElementChild.innerHTML.split(' ')[0];
+            let base_fare = "<%= @driver.agency.base_fare %>";
+            $(".adp-directions").css("display", "none");
             document.getElementById('distance').value = distance
-            document.getElementById("booking_form").submit();
+            $("#booking").css("display", "block");
+            document.querySelector(".adp-legal").style.display = "none";
+            var price = distance.replace(/\,/g,'')*base_fare;
+            document.querySelector('.adp-summary').childNodes[2].innerHTML = "Total Fare " + price + " Rs.";
           });
         } else {
           alert('Directions request failed due to ' + status);
@@ -96,6 +102,8 @@
     
     //function to get geolocation of both addresses.
     getGeolocationData: function(){
+      $("#map").css("height", "500px");
+      $("#panel-direction").css("height", "500px");
       if($("#autocomplete").val() != "" && $("#autocomplete_2nd").val() != ""){
         geoAddress = [];
         bytutorialMap.codeAddress($("#autocomplete").val()).then(function(response){
@@ -127,46 +135,9 @@
       $("#map, #panel-direction").html("");
     }
   }
+  
 </script>
 
-
-
-<!-- <script type="text/javascript">
-  $(document).ready(function() {
-    $("#btn2").click(function(){
-      var source_latitude = parseFloat(document.getElementById("source_latitude").value);
-      var destination_latitude = parseFloat(document.getElementById("destination_latitude").value);
-      var source_longitude = parseFloat(document.getElementById("source_longitude").value);
-      var destination_longitude = parseFloat(document.getElementById("destination_longitude").value);
-
-      var a = <#%= Geocoder::Calculations.distance_between([`${source_latitude}`,`${source_longitude}`], [`${destination_latitude}`,`${destination_longitude}`]) %>;
-      console.log(a);
-    });
-  });
-</script>    --> 
-<!-- <script>
-$(document).ready(function() {
-  $("#btn2").click(function(){
-    var source_latitude = parseInt(document.getElementById("source_latitude").value);
-    var destination_latitude = parseInt(document.getElementById("destination_latitude").value);
-    var source_longitude = parseInt(document.getElementById("source_longitude").value);
-    var destination_longitude = parseInt(document.getElementById("destination_longitude").value);
-
-    var r = 6371; // Radius of the earth in km
-    var dlat = destination_latitude - source_latitude
-    var dlon = destination_longitude - source_longitude
-
-    var distance = Math.sin(dlat/2) * Math.sin(dlat/2) +
-                   Math.sin(dlon/2) * Math.sin(dlon/2) * 
-                   Math.cos(source_latitude) * Math.cos(destination_latitude);
-    var c = 2 * Math.atan2( Math.sqrt(distance), Math.sqrt(1-distance));
-    var d = r * c; // Distance in km
-    console.log(c);
-  });  
-});
-    
-</script>
- -->
 <style>
     
   body{
@@ -195,11 +166,11 @@ $(document).ready(function() {
   }
 
   #map{
-    height:500px;
+    /*height:500px;*/
   }
 
   #panel-direction{
-    height:500px;
+    /*height:500px;*/
     overflow-x:hidden;
   }
 </style>

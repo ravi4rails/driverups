@@ -11,6 +11,11 @@
         <strong>Name:</strong>
         <%= @agency.name %>
       </div>
+      
+      <div>
+        <strong>Base fare:</strong>
+        <%= @agency.base_fare %>
+      </div> 
 
       <div>
         <strong>Cover image:</strong><br>
@@ -21,6 +26,7 @@
         <strong>Logo:</strong><br>
         <%= image_tag @agency.logo_url, class: "w-25" %>
       </div> 
+
       <div class="mt-2">
         <%= link_to 'New Driver', new_agency_driver_path(@agency), class: "btn btn-info btn-sm" %> 
         <%= link_to 'Edit', edit_agency_path(@agency), class: "btn btn-primary btn-sm" %>             
