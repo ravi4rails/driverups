@@ -11,6 +11,5 @@ STATUS = ["Confirm , Pending"]
  
   def assign_default_status
     self.update(status: "Pending")
-  end
-
+  end  
 end
