@@ -7,11 +7,11 @@ class User < ApplicationRecord
   has_one :agency
   has_many :bookings
   after_create :assign_default_role
-
+  
   ROLES = ["admin, guest"] 
   
   def assign_default_role
-    self.update(role: "guest")
+    self.update(role: "guest") unless self.admin?
   end
 
   def admin?
