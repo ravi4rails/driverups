@@ -32,7 +32,8 @@ class PaymentsController < ApplicationController
         @user.update(stripe_customer_token: @customer.id)
       end
       puts @customer
-      total_amount = ((20 * @booking.amount) / 100) * 100
+      total_amount = (params[:payment][:amount].to_i * 100)
+      byebug
       @charge = @stripe.create_charge(total_amount, 'usd', @booking.distance, @customer.id)
       puts @charge
       redirect_to root_path,  notice: "Booking done succesfully"
