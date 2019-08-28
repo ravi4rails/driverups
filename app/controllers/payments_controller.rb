@@ -24,7 +24,6 @@ class PaymentsController < ApplicationController
       @booking = Booking.find(params[:payment][:booking_id])
       @stripe = StripeUsage.new
       card_token = params[:card_token]
-      ContactMailer.booking_email(user: @user.email).deliver_now
       if @user.stripe_customer_token.present?
         @customer = @stripe.find_customer(@user.stripe_customer_token)
       else
@@ -35,6 +34,7 @@ class PaymentsController < ApplicationController
       total_amount = (params[:amount].to_i * 100)
       @charge = @stripe.create_charge(total_amount, 'usd', @booking.distance, @customer.id)
       puts @charge
+      ContactMailer.booking_email(user: @user.email).deliver_now
       redirect_to root_path,  notice: "Booking done succesfully"
     end
   end
