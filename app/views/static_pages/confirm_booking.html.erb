@@ -20,7 +20,7 @@
       <%= f.hidden_field :booking_id, value: @booking.id %>
       <%= f.hidden_field :stripe_card_token %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :amount, value: ((20 * @booking.amount) / 100) %>
+      <%= hidden_field_tag :amount, nil, value: ((20 * @booking.amount) / 100) %>
       <div class="form-group">
         <div class="controls">
           <%= text_field_tag :card_number, nil, class: "form-control", "data-stripe" => "number" %>
