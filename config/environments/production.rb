@@ -95,12 +95,12 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true 
 
   ActionMailer::Base.smtp_settings = {
-  :user_name => Rails.application.credentials[:sendgrid][:username],
-  :password => Rails.application.credentials[:sendgrid][:password],
-  :domain => 'driverups.herokuapp.com',
-  :address => 'smtp.sendgrid.net',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
-}
+    :user_name => Rails.application.credentials[:sendgrid][:username],
+    :password => Rails.application.credentials[:sendgrid][:password],
+    :domain => 'driverups.herokuapp.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
