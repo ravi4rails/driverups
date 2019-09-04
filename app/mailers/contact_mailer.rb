@@ -8,8 +8,8 @@ class ContactMailer < ApplicationMailer
   end
   
   def booking_email(email) 
-    @email = email
-    mail(to: @email, subject: 'Your booking has been confirmed')
+    email = email
+    mail(to: email, subject: 'Your booking has been confirmed')
   end 
 
 end
