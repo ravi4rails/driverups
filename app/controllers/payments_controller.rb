@@ -34,7 +34,7 @@ class PaymentsController < ApplicationController
       total_amount = (params[:amount].to_i * 100)
       @charge = @stripe.create_charge(total_amount, 'usd', @booking.distance, @customer.id)
       puts @charge
-      ContactMailer.booking_email(user: @user.email).deliver_now
+      ContactMailer.booking_email(@user.email).deliver_now
       redirect_to root_path,  notice: "Booking done succesfully"
     end
   end
