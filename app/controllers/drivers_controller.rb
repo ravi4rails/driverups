@@ -60,4 +60,3 @@ class DriversController < ApplicationController
       params.require(:driver).permit!
     end  
 end
-
